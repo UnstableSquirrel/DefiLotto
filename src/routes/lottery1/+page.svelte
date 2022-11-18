@@ -92,8 +92,18 @@ let usdcAddress = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
 			// altert("approval is pending, wait until the transaction goes through before buying a ticket!")
 		}
 		if (allowance >= mintPayment) {
-			mint = await contract.methods.mint($selectedAccount, amount).send({ from: $selectedAccount, gasPrice : 35000000000, gasLimit: 500000})
-			console.log(mint)
+			if (amount < 5) {
+				mint = await contract.methods.mint($selectedAccount, amount).send({ from: $selectedAccount, gasPrice : 55000000000, gasLimit: 700000})
+				console.log(mint)
+			}
+			if ((amount >= 5) && (amount <= 10)) {
+				mint = await contract.methods.mint($selectedAccount, amount).send({ from: $selectedAccount, gasPrice : 55000000000, gasLimit: 1000000})
+				console.log(mint)
+			}
+			if ((amount > 10) && (amount <= 20)) {
+				mint = await contract.methods.mint($selectedAccount, amount).send({ from: $selectedAccount, gasPrice : 55000000000, gasLimit: 1500000})
+				console.log(mint)
+			}
 		}
    }
 
