@@ -8,11 +8,11 @@
 	// import usdcABI from "./contracts/USDC_ABI.json"
 	// let usdcAddress = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
 
-	onMount(async () => {
-		if(browser) {
-			evm.setProvider()
-		}
-	});
+	// onMount(async () => {
+	// 	if(browser) {
+	// 		evm.setProvider()
+	// 	}
+	// });
 
 	let y = 0
 	let display = "flex"
@@ -176,6 +176,9 @@
 		// evm.setProvider('https://rpc-mainnet.maticvigil.com')
 		// evm.setProvider('https://polygon-rpc.com')
 		evm.setProvider()
+		if ($chainId != 137) {
+			alert("Please connect to the Polygon network.")
+		}
 		// console.log(selectedAccount)
 
 		// evm.setProvider()

@@ -62,15 +62,20 @@ let usdcAddress = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
 	async function getData() {
 		if(browser) {
 			await evm.setProvider()
-			const contract = new $web3.eth.Contract(ABI, CONTRACT)
-			soldTickets = await contract.methods.supply().call()
-			cost = await contract.methods.cost().call()
-			prize = await contract.methods.prizeAmount().call()
-			totalTickets = await contract.methods.maxSupply().call()
-			limit = await contract.methods.maxMintAmount().call()
-			// console.log(ticketPercentage)
-			remainingTickets = totalTickets - soldTickets
-			ticketPercentage = (totalTickets / 100) * soldTickets 
+				if ($chainId == 137) {
+					const contract = new $web3.eth.Contract(ABI, CONTRACT)
+					soldTickets = await contract.methods.supply().call()
+					cost = await contract.methods.cost().call()
+					prize = await contract.methods.prizeAmount().call()
+					totalTickets = await contract.methods.maxSupply().call()
+					limit = await contract.methods.maxMintAmount().call()
+					// console.log(ticketPercentage)
+					remainingTickets = totalTickets - soldTickets
+					ticketPercentage = (totalTickets / 100) * soldTickets 
+				}
+				else {
+					alert("Please connect to the Polygon network.")
+				}
 		}
    }
 

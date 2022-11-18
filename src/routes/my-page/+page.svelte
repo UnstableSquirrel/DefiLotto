@@ -37,13 +37,18 @@
 	async function getData() {
 			if(browser) {
 				await evm.setProvider()
-				const contract = new $web3.eth.Contract(ABI, CONTRACT)
+				if ($chainId == 137) {
+					const contract = new $web3.eth.Contract(ABI, CONTRACT)
 
-				walletOfOwner = await contract.methods.walletOfOwner($selectedAccount).call()
-				walletOfOwnerAmount = walletOfOwner.length
-				// console.log(walletOfOwner.length)
-				// winningNFTId = await contract.methods.winningNFTId().call()
-				// console.table("Address: " + winnerAddress, "NFTId: " + winningNFTId)
+					walletOfOwner = await contract.methods.walletOfOwner($selectedAccount).call()
+					walletOfOwnerAmount = walletOfOwner.length
+					// console.log(walletOfOwner.length)
+					// winningNFTId = await contract.methods.winningNFTId().call()
+					// console.table("Address: " + winnerAddress, "NFTId: " + winningNFTId)
+				}
+				else {
+					alert("Please connect to the Polygon network.")
+				}
 			}
 	}
 
@@ -73,9 +78,11 @@
 				{#await getData()}
 				<i style="display: none;">get Data</i>
 				{:then connected}
-					{#each walletOfOwner as id}
-					<img class="ticket" src="tickets/{id}.png" alt="Ticket">
-					{/each}
+					{#if $chainId == 137}
+						{#each walletOfOwner as id}
+						<img class="ticket" src="tickets/{id}.png" alt="Ticket">
+						{/each}
+					{/if}
 				{/await}
 					<!-- <p style="color: white; font-size: 20px; font-weight: bold; margin: 10px 0px 0px 0px;">{walletOfOwnerAmount}x</p> -->
 				<!-- <img class="ticket" src="img/ticket.png" alt="Ticket"> -->

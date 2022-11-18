@@ -12,11 +12,16 @@ let winningNFTId
 async function getData() {
 		if(browser) {
 			await evm.setProvider()
-			const contract = new $web3.eth.Contract(ABI, CONTRACT)
+			if ($chainId == 137) {
+				const contract = new $web3.eth.Contract(ABI, CONTRACT)
 
-			winnerAddress = await contract.methods.winnerAddress().call()
-			winningNFTId = await contract.methods.winningNFTId().call()
-			// console.table("Address: " + winnerAddress, "NFTId: " + winningNFTId)
+				winnerAddress = await contract.methods.winnerAddress().call()
+				winningNFTId = await contract.methods.winningNFTId().call()
+				// console.table("Address: " + winnerAddress, "NFTId: " + winningNFTId)
+			}
+			else {
+				alert("Please connect to the Polygon network.")
+			}
 		}
    }
 
