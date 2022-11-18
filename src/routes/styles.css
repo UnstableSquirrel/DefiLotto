@@ -1,0 +1,13 @@
+@import '@fontsource/fira-mono';
+
+body {
+	font-family: "Josefin Sans", sans-serif;
+    font-size: 18px;
+    padding: 0;
+    margin: 0;
+    font-weight: 400;
+    position: relative;
+    /* background-color: #0f0232; */
+    /* background-image: linear-gradient(7deg, #ec1379 0%, #6c0092 100%); */
+    /* background-image: linear-gradient(0deg, #ec1379 0%, #6c0092 50%, #4c0859 100%); */
+}
