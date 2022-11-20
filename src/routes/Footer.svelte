@@ -85,6 +85,7 @@
 		justify-content: center;
 		align-items: center;
 		padding: 0px;
+		z-index: 5;
 	}
 
 	footer > img {

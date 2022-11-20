@@ -11,13 +11,13 @@ let winningNFTId
 
 async function getData() {
 		if(browser) {
-			await evm.setProvider()
+			// await evm.setProvider()
 			if ($chainId == 137) {
 				const contract = new $web3.eth.Contract(ABI, CONTRACT)
 
 				winnerAddress = await contract.methods.winnerAddress().call()
 				winningNFTId = await contract.methods.winningNFTId().call()
-				// console.table("Address: " + winnerAddress, "NFTId: " + winningNFTId)
+				console.table("Address: " + winnerAddress, "NFTId: " + winningNFTId)
 			}
 			else {
 				alert("Please connect to the Polygon network.")
@@ -39,11 +39,11 @@ async function getData() {
 
 		<div class="latest-winner-container">
 			<div>
-				<p>Winning Ticket: TBA</p>
-				<!-- <p>Date: <span>June 12, 2022</span></p> -->
+				<p>Winning Ticket: {winningNFTId}</p>
+				<p>Date: <span>Nov 18, 2022</span></p>
 				<div class="line"></div>
 				<h2>Winner Address</h2>
-				<div class="latest-winner-address"><h1>TBA</h1></div>
+				<div class="latest-winner-address"><h1>{winnerAddress}</h1></div>
 			</div>
 		</div>
 	</section>

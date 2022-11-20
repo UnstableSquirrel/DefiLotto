@@ -36,7 +36,7 @@
 
 	async function getData() {
 			if(browser) {
-				await evm.setProvider()
+				// await evm.setProvider()
 				if ($chainId == 137) {
 					const contract = new $web3.eth.Contract(ABI, CONTRACT)
 

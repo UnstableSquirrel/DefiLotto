@@ -14,6 +14,8 @@ let usdcAddress = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
 	// 	connectToWeb3 = await evm.setProvider()
 	// });
 
+	let display
+
 	const CONTRACT = "0x1f0E70986dFc95D65Ed87e46750F8C77830fE7B4"
 	let totalTickets = 0
 	let cost = 0
@@ -34,6 +36,13 @@ let usdcAddress = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
 
 
 
+	$: if (remainingTickets == 0) {
+		display = "grid"
+	}
+
+	$: if (remainingTickets > 0) {
+		display = "none"
+	}
 
 	$: if (amount < 1) {
 		amount = 1
@@ -41,6 +50,15 @@ let usdcAddress = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
 
 	$: if (amount > limit) {
 		amount = limit
+	}
+
+	function check() {
+		if ((remainingTickets <= amount) && (remainingTickets != 0)) {
+			amount = remainingTickets
+		}
+		if (remainingTickets == 0) {
+			amount = 1
+		}
 	}
 
 	function increaseAmount() {
@@ -61,7 +79,7 @@ let usdcAddress = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
 
 	async function getData() {
 		if(browser) {
-			await evm.setProvider()
+			// await evm.setProvider()
 				if ($chainId == 137) {
 					const contract = new $web3.eth.Contract(ABI, CONTRACT)
 					soldTickets = await contract.methods.supply().call()
@@ -72,6 +90,10 @@ let usdcAddress = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
 					// console.log(ticketPercentage)
 					remainingTickets = totalTickets - soldTickets
 					ticketPercentage = (totalTickets / 100) * soldTickets 
+
+					///////////////////////////////////////////////////////////////////////////////
+					// await contract.methods.requestRandomNumber().send({ from: $selectedAccount })
+					///////////////////////////////////////////////////////////////////////////////
 				}
 				else {
 					alert("Please connect to the Polygon network.")
@@ -101,7 +123,7 @@ let usdcAddress = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
 				console.log(mint)
 			}
 			if ((amount > 10) && (amount <= 20)) {
-				mint = await contract.methods.mint($selectedAccount, amount).send({ from: $selectedAccount, gasPrice : 55000000000, gasLimit: 2500000})
+				mint = await contract.methods.mint($selectedAccount, amount).send({ from: $selectedAccount, gasPrice : 55000000000, gasLimit: 200000})
 				console.log(mint)
 			}
 		}
@@ -122,7 +144,15 @@ let usdcAddress = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
 			<i style="display: none;">get Data</i>
 			{/await}
 			
+
+			<!-- <div class="banner"> <i style="visibility: hidden;">kfsjsgdfs</i> Minted Out!</div> -->
+		<div class="cover" style="display: {display};">
+			<div>
+				Minted Out!
+			</div>
+		</div>
 			<div class="lottery-container">
+			<!-- <div class="cover"></div> -->
 				<div>
 					<h3>Enter now for a chance to win</h3>
 					<h2>{JSON.stringify(prize).slice(1,4)} $USDC</h2>
@@ -146,10 +176,10 @@ let usdcAddress = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
 						<div class="progressbar">
 							<div class="bar" style="width: {ticketPercentage.toFixed(0)}%;"></div>
 						</div>
-						{#if soldTickets >= 500}
+						{#if soldTickets >= 50}
 						<p>Only {remainingTickets} remaining!</p>
 						{/if}
-						{#if soldTickets < 500}
+						{#if soldTickets < 50}
 						<p>{remainingTickets} remaining!</p>
 						{/if}
 					</div>
@@ -163,22 +193,29 @@ let usdcAddress = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
 		
 						<div class="quantity-text">
 							<p>Quantity</p>
+						</div>
 		
 						<div class="quantity-amount">
 							<div on:click="{decreaseAmount}">
 								<div></div>
 							</div>
 							<p>{amount}</p>
-							<div on:mousedown="{increaseAmount}">
+							<div on:mousedown="{check}" on:click="{increaseAmount}">
 								<div></div>
 							</div>
 						</div>
 					</div>
 		
+					{#if remainingTickets == 0}
+					<div class="buy-button-container">
+						<a href="#Test" class="button-disabled">buy Tickets</a>
+					</div>
+					{/if}
+					{#if remainingTickets > 0}
 					<div class="buy-button-container" on:click={mint}>
 						<a href="#Test" class="buy-tickets-button">buy Tickets</a>
 					</div>
-					
+					{/if}
 				</div>
 			</div>
 		</section>
@@ -241,6 +278,98 @@ let usdcAddress = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
 	
 
 <style>
+
+.cover {
+	position: fixed; /* Sit on top of the page content */
+	width: 100%; /* Full width (cover the whole page) */
+	height: 100%; /* Full height (cover the whole page) */
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+	z-index: 3; /* Specify a stack order in case you're using a different order for other elements */
+	cursor: pointer; /* Add a pointer on hover */
+	justify-items: center;
+	align-items: center;
+}
+
+.cover > div {
+	display: grid;
+	justify-items: center;
+	align-items: center;
+	font-size: 54px;
+	color: white;
+	background-color: rgb(168, 1, 1);
+	height: 100px;
+	width: 100%;
+}
+
+.button-disabled {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  text-decoration: none;
+	padding: 15px 35px;
+	font-size: 18px;
+	font-weight: 600;
+	text-transform: uppercase;
+	border-radius: 999px;
+	-webkit-border-radius: 999px;
+	-moz-border-radius: 999px;
+	-ms-border-radius: 999px;
+	-o-border-radius: 999px;
+	box-shadow: 0px 17px 40px 0px rgb(124 78 25 / 35%);
+	-webkit-transition: background-size 0.3s;
+	-o-transition: background-size 0.3s;
+	transition: background-size 0.3s;
+	color: #ffffff;
+}
+
+.button-disabled:hover { 
+	cursor: not-allowed;
+}
+
+.banner {
+    height: 35px;
+    width: 580px;
+	margin: -22px 0px 0px 0px;
+	padding: 0px;
+    background-color: #c50000;
+    position: absolute;
+    /* top: 48px; */
+    /* right: -6px; */
+    text-align: center;
+    color: #FFF;
+    font-weight: 600;
+    font-size: 28px;
+	text-transform: uppercase;
+    /* white-space: nowrap; */
+  	-webkit-transform: rotate(35deg);
+    -moz-transform: rotate(35deg);
+    -ms-transform: rotate(35deg);
+    -o-transform: rotate(35deg);
+    transform: rotate(35deg);
+	z-index: 5;
+}
+
+.banner:before {
+    box-sizing: border-box;
+    border-style: solid;
+    border-color: transparent;
+    border-width: 37px;
+    border-left-width: 53px;
+    border-right-width: 26px;
+    content: "";
+    display: block;
+    left: -49px;
+    position: absolute;
+    width: 143.6%;
+    border-top-width: 0px;
+    border-bottom-color: #c50000;
+    top: -2px;
+    z-index: -1;
+}
 
 @media (min-width: 901px) and (max-width: 1400px) {
 	.section3 {
