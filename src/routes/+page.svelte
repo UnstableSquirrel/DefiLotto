@@ -21,12 +21,50 @@
 	// 		else result = "Not a valid address.";
 	// }
 
-</script>
+	let selectedNetwork = 1
 
-<svelte:head>
-	<title>DeFi Lottery</title>
-	<meta name="description" content="DeFi Lotto" />
-</svelte:head>
+	let background1 = "rgba(247, 7, 255, 0.5)"
+	let color1 = "white"
+	let fontWeight1 = "600"
+	let border1 = "2px solid white"
+
+	let background2 = "rgba(244, 245, 255, 0)"
+	let color2 = "#c4cbf9"
+	let fontWeight2 = "500"
+	let border2 = "none"
+
+	function toggleNetwork(i) {
+		// console.log(selectedNetwork)
+		if (i == 2) {
+			background2 = "rgba(247, 7, 255, 0.5)"
+			color2 = "white"
+			fontWeight2 = "600"
+			border2 = "2px solid white"
+
+			background1 = "rgba(244, 245, 255, 0)"
+			color1 = "#c4cbf9"
+			fontWeight1 = "500"
+			border1 = "none"
+
+			selectedNetwork = 2
+		}
+
+		if (i == 1) {
+			background1 = "rgba(247, 7, 255, 0.5)"
+			color1 = "white"
+			fontWeight1 = "600"
+			border1 = "2px solid white"
+
+			background2 = "rgba(244, 245, 255, 0)"
+			color2 = "#c4cbf9"
+			fontWeight2 = "500"
+			border2 = "none"
+
+			selectedNetwork = 1
+		}
+	}
+
+</script>
 
 <main>
 
@@ -158,13 +196,131 @@
 
 	<section class="section3">
 		<div class="section-header">
-			<span class="section-sub-title">These are our upcoming</span>
-			<h2 class="section-title">Lotteries</h2>
-			<p>Coming soon ...</p>
+			<span class="section-sub-title">Choose from one of</span>
+			<h2 class="section-title">Our Lotteries</h2>
+			<p>With various entry points and prizes</p>
+		</div>
+
+		<div class="select-chain-lotteries">
+			<div on:click="{() => toggleNetwork(1)}" style="background-color:{background1};">
+				<img style="border:{border1};" src="img/polygon.png" alt="Polygon">
+					<p style="font-weight: {fontWeight1}; color: {color1};">Polygon Network</p>
+			</div>
+			<div on:click="{() => toggleNetwork(2)}" style="background-color:{background2};">
+				<img style="border:{border2};" src="img/bsc.png" alt="Binance Smart Chain">
+				<p style="font-weight: {fontWeight2}; color: {color2};">Binance Smart Chain</p>
+			</div>
 		</div>
 
 		<div class="lotteries-container">
-			<div>
+
+			<div class="ticket-prize-sec">$1.50 Tickets</div>
+
+			<div class="lotteries-1">
+
+				<div>
+					<div class="prize-top">
+						<p>Win</p>
+						<h1>$1,000</h1>
+					</div>
+					<img src="/img/usdc.png" alt="USDC">
+					<div>
+						<p>Ticket Prize: <span>$1.50</span></p>
+						<p>Total Tickets: <span>1,000</span></p>
+						<p>Winning Probability: <span>1:1,000</span></p>
+						<a href="/"><button disabled="disabled">Get Tickets</button></a>
+					</div>
+				</div>
+
+				<div>
+					<div class="prize-top">
+						<p>Win</p>
+						<h1>$10,000</h1>
+					</div>
+					<img src="/img/usdc.png" alt="USDC">
+					<div>
+						<p>Ticket Prize: <span>$1.50</span></p>
+						<p>Total Tickets: <span>10,000</span></p>
+						<p>Winning Probability: <span>1:10,000</span></p>
+						<a href="/"><button disabled="disabled">Get Tickets</button></a>
+					</div>
+				</div>
+
+			</div>
+
+
+			<div class="ticket-prize-sec">$5 Tickets</div>
+
+
+			<div class="lotteries-2">
+				
+				<div>
+					<div class="prize-top">
+						<p>Win</p>
+						<h1>$2,500</h1>
+					</div>
+					<img src="/img/usdc.png" alt="USDC">
+					<div>
+						<p>Ticket Prize: <span>$5</span></p>
+						<p>Total Tickets: <span>1,000</span></p>
+						<p>Winning Probability: <span>1:1,000</span></p>
+						<a href="/"><button disabled="disabled">Get Tickets</button></a>
+					</div>
+				</div>
+
+				<div>
+					<div class="prize-top">
+						<p>Win</p>
+						<h1>$25,000</h1>
+					</div>
+					<img src="/img/usdc.png" alt="USDC">
+					<div>
+						<p>Ticket Prize: <span>$5</span></p>
+						<p>Total Tickets: <span>25,000</span></p>
+						<p>Winning Probability: <span>1:10,000</span></p>	
+						<a href="/"><button disabled="disabled">Get Tickets</button></a>
+					</div>
+				</div>
+
+			</div>
+
+
+
+			<div class="ticket-prize-sec">$15 Tickets</div>
+
+			<div class="lotteries-3">
+				
+				<div>
+					<div class="prize-top">
+						<p>Win</p>
+						<h1>$10,000</h1>
+					</div>
+					<img src="/img/usdc.png" alt="USDC">
+					<div>
+						<p>Ticket Prize: <span>$15</span></p>
+						<p>Total Tickets: <span>1,000</span></p>
+						<p>Winning Probability: <span>1:1,000</span></p>
+						<a href="/"><button disabled="disabled">Get Tickets</button></a>
+					</div>
+				</div>
+
+				<div>
+					<div class="prize-top">
+						<p>Win</p>
+						<h1>$100,000</h1>
+					</div>
+					<img src="/img/usdc.png" alt="USDC">
+					<div>
+						<p>Ticket Prize: <span>$15</span></p>
+						<p>Total Tickets: <span>10,000</span></p>
+						<p>Winning Probability: <span>1:10,000</span></p>
+						<a href="/"><button disabled="disabled">Get Tickets</button></a>
+					</div>
+				</div>
+				
+			</div>
+
+			<!-- <div>
 				<div>
 					<h1>$10,000</h1>
 				</div>
@@ -184,9 +340,9 @@
 					<p>Mint a ticket for $15 from a total set of 10,000 tickets in order to have a chance of winning 100,000 $USDC. Winning probability per ticket is 1:10,000.</p>
 					<a href="/"><button disabled="disabled">Get Tickets</button></a>
 				</div>
-			</div>
+			</div> -->
 
-			<div>
+			<!-- <div>
 				<div>
 					<h1>$1,000,000</h1>
 				</div>
@@ -195,7 +351,7 @@
 					<p>Mint a ticket for $150 from a total set of 10,000 tickets in order to have a chance of winning 100,000 $USDC. Winning probability per ticket is 1:10,000.</p>
 					<a href="/"><button disabled="disabled">Get Tickets</button></a>
 				</div>
-			</div>
+			</div> -->
 
 		</div>
 	</section>
@@ -216,7 +372,9 @@
 				<br>
 				<p>Build out the Lottery to be adapted by the entire crypto space.</p>
 				<br>
-				<p>Slowly grow and increase the outreach and user size. </p>
+				<p>Slowly grow and increase the outreach.</p>
+				<br>
+				<p>Audit the core lottery contract.</p>
 			</div>
 			<div class="circle-style">
 				<h1>1</h1>
@@ -278,7 +436,7 @@
 
 
 @media (min-width: 901px) and (max-width: 1100px) {
-	.lotteries-container {
+	.lotteries-container > div {
 		grid-template-columns: auto auto !important;
 	}
 }
@@ -288,7 +446,7 @@
 		padding: 100px 0px 25px 150px !important;
 	}
 
-	.lotteries-container {
+	.lotteries-container > div {
 		grid-template-columns: auto auto !important;
 	}
 }
@@ -347,7 +505,7 @@
 		grid-template-columns: auto auto !important;
 	}
 
-	.lotteries-container {
+	.lotteries-container > div {
 		grid-template-columns: auto !important;
 	}
 }
@@ -361,7 +519,7 @@
 		grid-template-columns: auto auto !important;
 	}
 
-	.lotteries-container {
+	.lotteries-container > div {
 		grid-template-columns: auto !important;
 	}
 
@@ -413,7 +571,7 @@
 		grid-template-columns: auto !important;
 	}
 
-	.lotteries-container {
+	.lotteries-container > div {
 		grid-template-columns: auto !important;
 	}
 
@@ -499,40 +657,55 @@
 		grid-template-columns: auto !important;
 	}
 
-	.lotteries-container {
+	.ticket-prize-sec {
+		font-size: 33px !important;
+		padding: 0px 0px 0px 0px !important;
+	}
+
+	.lotteries-container > div {
 		grid-template-columns: auto !important;
 	}
 
-	.lotteries-container > div > div > h1 {
+	.lotteries-container > div > div > div > h1 {
 		font-size: 38px !important;
 	}
 
-	.lotteries-container > div:nth-child(1) {
+	.lotteries-container > div > div {
 		width: 200px !important;
-		height: 508px !important;
+		height: 480px !important;
 	}
-
-	.lotteries-container > div:nth-child(2) {
-		width: 200px !important;
-		height: 535px !important;
-	}
-
-	.lotteries-container > div:nth-child(3) {
+/* 
+	.lotteries-container > div > div:nth-child(2) {
 		width: 200px !important;
 		height: 535px !important;
 	}
 
-	.lotteries-container > div > img {
+	.lotteries-container > div > div:nth-child(3) {
+		width: 200px !important;
+		height: 535px !important;
+	} */
+
+	.lotteries-container > div > div > img {
 		margin: -80px 0px 0px 20px !important;
 	}
 
-	.lotteries-container > div > div:nth-child(3) > p {
-		padding: 0px 0px 0px 0px !important;
-		margin: 10px 0px; 
+	.lotteries-container > div > div > div:nth-child(3) > p:nth-child(1) {
+		margin-top: 10px !important;
 	}
 
-	.lotteries-container > div > div:nth-child(3) > a > button {
+	.lotteries-container > div > div > div:nth-child(3) > p {
+		padding: 0px 0px 0px 0px !important;
+		margin: 2px 0px; 
+		text-align: center !important;
+	}
+
+	.lotteries-container > div > div > div:nth-child(3) > p:nth-child(3) {
+		margin-bottom: 20px !important;
+	}
+
+	.lotteries-container > div > div > div:nth-child(3) > a > button {
 		padding: 10px 10px 10px 10px !important;
+		margin: 10px 0px 10px 0px !important;
 	}
 
 	.roadmap-container {
@@ -960,16 +1133,89 @@
 
 
 
+	.section3 {
+		background-color: #15004e;
+		display: grid;
+		justify-items: center;
+		align-items: center;
+	}
+
+	.select-chain-lotteries {
+		display: grid;
+		justify-items: center;
+		align-items: center;
+		grid-template-columns: auto auto;
+		background-image: linear-gradient(45deg, rgba(214, 61, 245, 0.5) 0%, rgba(144, 61, 245, 0.5) 100%);
+		border-radius: 10px;
+	}
+
+	.select-chain-lotteries >  div {
+		display: grid;
+		justify-items: center;
+		align-items: center;
+		/* background-color: rgba(247, 7, 255, 0.5); */
+		padding: 10px 0px 8px 0px;
+		width: 120px;
+		/* transition: all 0.4s; */
+	}
+
+	.select-chain-lotteries >  div:hover {
+		cursor: pointer;
+		/* background-color: rgba(247, 7, 255, 0.5); */
+		/* transition: all 0.4s; */
+	}
+
+	.select-chain-lotteries >  div:nth-child(1) {
+		border-radius: 10px 0px 0px 10px;
+		/* transition: all 0.4s; */
+	}
+
+	.select-chain-lotteries >  div:nth-child(2) {
+		border-radius: 0px 10px 10px 0px;
+		/* transition: all 0.4s; */
+	}
 
 
-	.lotteries-container {
+	.select-chain-lotteries >  div > img {
+		width: 55px;
+		height: 55px;
+		margin: 0px 10px 10px 10px;
+		border-radius: 50px;
+		/* transition: all 0.4s; */
+	}
+
+	.select-chain-lotteries >  div > p {
+		max-width: 200px;
+		font-size: 14px;
+		margin: 0px 10px;
+		text-align: center;
+		/* transition: all 0.4s; */
+	}
+	
+	.lotteries-container > div {
 		display: grid;
 		justify-content: center;
 		justify-items: center;
 		grid-template-columns: auto auto auto;
 	}
 
-	.lotteries-container > div {
+	.ticket-prize-sec {
+		/* color: #ffb200; */
+		color: white;
+		font-size: 40px;
+		font-weight: 800 !important;
+		/* max-width: 400px; */
+		/* width: 70vw; */
+		background-image: linear-gradient(135deg, #5496ff 0%, #8739e6 100%);
+		/* background-image: linear-gradient(45deg, #d73df5 0%, #8f3df5 100%); */
+		height: 50px;
+		border-radius: 5px;
+		align-self: center;
+		padding: 0px 0px 10px 0px;
+		margin: 100px 0px 0px 0px; 
+	}
+
+	.lotteries-container > div > div {
 		width: 300px;
 		height: 450px;
 		padding: 0px;
@@ -980,7 +1226,16 @@
 		margin: 25px;
 	}
 
-	.lotteries-container > div > div:nth-child(1) {
+	.prize-top > p {
+		text-align: left;
+		margin: 10px 0px 0px 0px; 
+		width: 100%; 
+		font-size: 20px;
+		padding: 0px;
+		color: #ffb200;
+	}
+
+	.lotteries-container > div > div > div:nth-child(1) {
 		display: grid;
 		justify-content: center;
 		justify-items: center;
@@ -992,23 +1247,23 @@
 		box-shadow: none;
 	}
 
-	.lotteries-container > div > div:nth-child(1) > h1 {
-		margin: 30px 0px 80px 0px;
+	.lotteries-container > div > div > div:nth-child(1) > h1 {
+		margin: 00px 0px 80px 0px;
 		font-size: 45px;
 		z-index: 2;
 	}
 
-	.lotteries-container > div > img {
+	.lotteries-container > div > div > img {
 		margin: -80px 0px 0px 70px;
 		width: 150px;
 		height: 150px;
 	}
 
-	.lotteries-container > div > div:nth-child(3) {
+	.lotteries-container > div > div > div:nth-child(3) {
 		display: grid;
 		justify-content: center;
 		justify-items: center;
-		padding: 55px 15px 25px 15px;
+		padding: 70px 15px 25px 15px;
 		border-radius: 0px 0px 2px 2px;
 		border: none;
 		background: rgba(73, 57, 192, 0.5);
@@ -1017,11 +1272,23 @@
 		z-index: 2;
 	}
 
-	.lotteries-container > div > div:nth-child(3) > p {
-		padding: 0px 0px 0px 25px;
+	.lotteries-container > div > div > div:nth-child(3) > p {
+		padding: 5px 0px 0px 25px;
+		text-align: left;
+		width: 100%;
 	}
 
-	.lotteries-container > div > div:nth-child(3) > a > button {
+	.lotteries-container > div > div > div:nth-child(3) > p > span {
+		color: #ffb200;
+		font-size: 17px;
+		font-weight: 600;
+	}
+
+	.lotteries-container > div > div > div:nth-child(3) > p:nth-child(3) {
+		margin-bottom: 7px;
+	}
+
+	.lotteries-container > div > div > div:nth-child(3) > a > button {
 		margin: 15px 0px 0px 0px;
     	padding: 15px 40px 15px 40px;
 		font-size: 18px;
