@@ -83,11 +83,11 @@
 						<img class="ticket" src="tickets/{id}.png" alt="Ticket">
 						{/each}
 					{/if}
-					{#if $chainId == 56 && walletOfOwner.length > 0}
+					<!-- {#if $chainId == 56 && walletOfOwner.length > 0}
 						{#each walletOfOwner as id}
 						<img class="ticket" src="tickets/{id}.png" alt="Ticket">
 						{/each}
-					{/if}
+					{/if} -->
 					{#if walletOfOwner.length == 0}
 						<p style="font-size: 40px; font-weight: 700; color: #ffb200;">No tickets yet</p>
 					{/if}
