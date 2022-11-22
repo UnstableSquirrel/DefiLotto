@@ -74,7 +74,7 @@
 			<div class="lp-content">
 				<div class="top-title">Your chance to</div>
 				<h2 class="top-title2">Really make it</h2>
-				<p>Are you tired of getting ruged by every other project? Do you want to have a fair chance making it? With DeFi Lotto you can actually become a crypto millionaire.</p>
+				<p>Are you tired of getting rugged by every other project? Do you want to have a fair chance making it? With DeFi Lotto you can actually become a crypto millionaire.</p>
 				<div class="buy-button-container">
 				  <a href="/lottery1" class="btn1">BUY A TICKET NOW</a>
 				  <!-- <a class="video-btn" href="/" data-rel="lightcase:myCollection"><i class="fas fa-play"></i></a> -->
