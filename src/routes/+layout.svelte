@@ -10,8 +10,8 @@
 	onMount(async () => {
 		if(browser) {
 			await evm.setProvider()
-			if ($chainId != 137) {
-				alert("Please connect to the Polygon network.")
+			if ($chainId != 137 && $chainData != 56) {
+				alert("Please connect to the Polygon or BSC network.")
 			}
 		}
 	});

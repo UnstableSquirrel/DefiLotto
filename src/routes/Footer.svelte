@@ -15,7 +15,7 @@
 				</div>
 				<div class="right">
 					<div>
-						<a href="/">
+						<a href="https://twitter.com/defi_lotto">
 							<img src="/img/twitter.png" alt="Twitter">
 						</a>
 					</div>
@@ -50,22 +50,23 @@
 		display: grid !important;
 		justify-items: center !important;
 		justify-content: center !important;
+		padding: 25px 50px !important;
 	}
 
 	h3 {
-		font-size: 20px !important;
+		font-size: 32px !important;
 		justify-content: center !important;
-		width: 150px !important;
+		width: 200px !important;
 	}
 
 	.left {
-		width: 150px !important;
+		width: 180px !important;
 	}
 
 	.right {
 		margin: 50px 0px 0px 0px !important;
 		justify-items: center !important;
-		grid-template-columns: 50px 50px !important;
+		grid-template-columns: 30px 50px 0px 0px !important;
 	}
 
 	.links-container {

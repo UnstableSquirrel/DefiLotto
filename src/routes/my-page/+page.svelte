@@ -36,7 +36,7 @@
 
 	async function getData() {
 			if(browser) {
-				// await evm.setProvider()
+				await evm.setProvider()
 				if ($chainId == 137) {
 					const contract = new $web3.eth.Contract(ABI, CONTRACT)
 
@@ -78,10 +78,18 @@
 				{#await getData()}
 				<i style="display: none;">get Data</i>
 				{:then connected}
-					{#if $chainId == 137}
+					{#if $chainId == 137 && walletOfOwner.length > 0}
 						{#each walletOfOwner as id}
 						<img class="ticket" src="tickets/{id}.png" alt="Ticket">
 						{/each}
+					{/if}
+					{#if $chainId == 56 && walletOfOwner.length > 0}
+						{#each walletOfOwner as id}
+						<img class="ticket" src="tickets/{id}.png" alt="Ticket">
+						{/each}
+					{/if}
+					{#if walletOfOwner.length == 0}
+						<p style="font-size: 40px; font-weight: 700; color: #ffb200;">No tickets yet</p>
 					{/if}
 				{/await}
 					<!-- <p style="color: white; font-size: 20px; font-weight: bold; margin: 10px 0px 0px 0px;">{walletOfOwnerAmount}x</p> -->
@@ -344,13 +352,15 @@
 		align-items: center;
 		margin: 25px 0px;
 		grid-template-columns: auto auto;
+		grid-gap: 10px 15px;
+		padding-top: 50px;
 	}
 
 	.ticket {
 		max-width: 500px;
 		width: 100%;
 		height: auto;
-		margin: 10px;
+		margin: 0px 0px 0px 0px;
 	}
 		
 </style>

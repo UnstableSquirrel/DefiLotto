@@ -79,7 +79,7 @@ let usdcAddress = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
 
 	async function getData() {
 		if(browser) {
-			// await evm.setProvider()
+			await evm.setProvider()
 				if ($chainId == 137) {
 					const contract = new $web3.eth.Contract(ABI, CONTRACT)
 					soldTickets = await contract.methods.supply().call()
@@ -726,6 +726,9 @@ let usdcAddress = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
 	}
 
 	.buy-button-container {
+		display: grid;
+		justify-items: center;
+		align-items: center;
 		margin: 35px 0px 25px 0px;
 	}
 

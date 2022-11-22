@@ -186,7 +186,7 @@
 
 		<div class="section2-explanation">
 			<p>
-				Our DeFi lottery aims to give everyone a fair and equal chance of making a good amount of money. Normal lotteries usually have a winning ratio in the range from 1/50,000,000 to 1/250,000,000.
+				Our DeFi lottery aims to give everyone a fair and equal chance of making a good amount of money. Normal lotteries usually have a winning ratio in the range from 1:50,000,000 to 1:250,000,000.
 				It is far more likely for you to win one of our prize pools than winning the lottery, and this is due to our game design. The majority of the money that is generated through the NFT lottery ticket 
 				sales is given back to the community, blessing someone with a fortune guaranteed.
 			</p>
@@ -203,11 +203,11 @@
 
 		<div class="select-chain-lotteries">
 			<div on:click="{() => toggleNetwork(1)}" style="background-color:{background1};">
-				<img style="border:{border1};" src="img/polygon.png" alt="Polygon">
+				<img style="border:{border1};" src="img/Polygon.png" alt="Polygon">
 					<p style="font-weight: {fontWeight1}; color: {color1};">Polygon Network</p>
 			</div>
 			<div on:click="{() => toggleNetwork(2)}" style="background-color:{background2};">
-				<img style="border:{border2};" src="img/bsc.png" alt="Binance Smart Chain">
+				<img style="border:{border2};" src="img/BSC.png" alt="Binance Smart Chain">
 				<p style="font-weight: {fontWeight2}; color: {color2};">Binance Smart Chain</p>
 			</div>
 		</div>
@@ -1138,6 +1138,7 @@
 		display: grid;
 		justify-items: center;
 		align-items: center;
+		grid-template-columns: auto;
 	}
 
 	.select-chain-lotteries {
