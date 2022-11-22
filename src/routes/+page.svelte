@@ -374,7 +374,7 @@
 				<br>
 				<p>Slowly grow and increase the outreach.</p>
 				<br>
-				<p>Audit the core lottery contract.</p>
+				<p>Audit the core lottery contract and upcoming ones.</p>
 			</div>
 			<div class="circle-style">
 				<h1>1</h1>
