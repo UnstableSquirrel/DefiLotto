@@ -66,6 +66,30 @@
 
 </script>
 
+<svelte:head>
+
+    <meta property="og:site_name" content="Berndt Education" />
+    <meta property=“og:description“ content="Customized language courses, curricula & language solutions in German, English, Spanish and Dutch." />
+    <meta name="google-site-verification" content="dThTT2bH3f172KZ7ZB5QTzFPLGL9K14pqrPUG3uAQ3c" />
+
+	
+
+	<title>DeFi Lotto</title>
+	<meta name="author" content="Block Starz">
+	<meta name="keywords" content="lotto, lottery, crypto, polygon, bsc, blockchain, decentralized, 
+	game, nft, network, message, global, defi, network, defi lotto, defi lottery, finance, eth, 
+	ethereum, gambling, prize, win, winning, nft lottery, nft lotto, nfts">
+	<meta name="description" content="DeFi Lotto is a decentralized NFT based lottery platform where users can mint NFT tickets and win prizes up to 1 Million Dollars in stable coins.">
+	<meta property="og:image" content="img/logo.png">
+	<meta property="og:title" content="DeFi Lotto">
+	<meta property="og:type" content="website" />
+    <meta property="og:url" content="https://defilotto.finance" />
+	<meta name="twitter:title" content="DeFi Lotto">
+	<link rel="shortcut icon" href="img/logo.png" type="image.png">
+	<link rel="icon" type="image/png" href="img/logo.png">
+
+</svelte:head>
+
 <main>
 
 	<section class="section1">
@@ -257,7 +281,7 @@
 				<div>
 					<div class="prize-top">
 						<p>Win</p>
-						<h1>$2,500</h1>
+						<h1>$3,500</h1>
 					</div>
 					<img src="/img/usdc.png" alt="USDC">
 					<div>
@@ -271,7 +295,7 @@
 				<div>
 					<div class="prize-top">
 						<p>Win</p>
-						<h1>$25,000</h1>
+						<h1>$35,000</h1>
 					</div>
 					<img src="/img/usdc.png" alt="USDC">
 					<div>

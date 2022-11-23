@@ -4,6 +4,7 @@
 	import { defaultEvmStores as evm, web3, selectedAccount, connected, chainId, chainData, contracts} from 'svelte-web3'
 	import { onMount } from 'svelte'
 	import { browser } from '$app/environment'
+	import { Winners } from '../winnerlist.js'
 	import ABI from "../contracts/DFL_ABI.json"
 	const CONTRACT = "0x1f0E70986dFc95D65Ed87e46750F8C77830fE7B4"
 
@@ -33,6 +34,7 @@
 
 	let walletOfOwner
 	let walletOfOwnerAmount
+	let luckyNFTsOfUser = []
 
 	async function getData() {
 			if(browser) {
@@ -51,6 +53,8 @@
 				}
 			}
 	}
+
+	console.log(Winners)
 
 </script>
 
@@ -103,21 +107,41 @@
 	</div>
 
 	<section class="section2">
-<!-- 
+
 		<div class="sec2-text">
-			<span>An Exhaustive list of amazing features</span>
-			<h2>What makes Rifa different?</h2>
-			<p>
-				We're bold in our ambition: to be the world's biggest and best online lottery platform. 
-				We're for every player that's ever dreamed of hitting the jackpot, which is why we bring you the biggest prizes from around the world and offer you tons of ways to play. 
-				Our aim is to offer unprecedented variety as well as quality. Our team of creative programmers, marketing experts, and members of the global lottery community have worked 
-				together to build the ultimate lottery site, and every win and happy customer reminds us how lucky we are to be doing what we love.
-			</p>
-		</div> -->
+			<span>Check if you won and look at</span>
+			<h2>All your lucky tickets</h2>
+			<div>
+				{#each Winners as winner}
+				{#if $selectedAccount == winner.Wallet}
+					<div>
+						<img src="/tickets/{winner.NFTId}.png" alt="Winner NFT">
+					</div>
+					<i style="display: none;">{luckyNFTsOfUser.push(winner.NFTId)}</i>
+				{/if}
+				{/each}
+
+				{#if luckyNFTsOfUser.length == 0}
+					<p class="no-lucky-tickets">No Lucky Numbers Yet ...</p>
+				{/if}
+
+			</div>
+		</div>
 
 	</section>
 	
 <style>
+
+	h2 {
+		text-transform: uppercase;
+	}
+
+	.no-lucky-tickets {
+		font-size: 25px;
+		font-weight: 600;
+		color: #ffb200;
+		text-transform: uppercase;
+	}
 
 @media (min-width: 431px) and (max-width: 900px) {
 	.section2 {
