@@ -4,7 +4,7 @@
 	import { defaultEvmStores as evm, web3, selectedAccount, connected, chainId, chainData, contracts} from 'svelte-web3'
 	import { onMount } from 'svelte'
 	import { browser } from '$app/environment'
-	import { Winners } from '../winnerlist.js'
+	import { Winners } from '../winners/winnerlist.js'
 	import ABI from "../contracts/DFL_ABI.json"
 	const CONTRACT = "0x1f0E70986dFc95D65Ed87e46750F8C77830fE7B4"
 
