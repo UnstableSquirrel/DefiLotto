@@ -5,7 +5,7 @@ import { onMount } from 'svelte'
 import { browser } from '$app/environment'
 import ABI from "../contracts/DFL_ABI.json"
 const CONTRACT = "0x1f0E70986dFc95D65Ed87e46750F8C77830fE7B4"
-import { Winners } from './winnerlist.js'
+import { Winners } from '../winnerlist.js'
 
 let winnerAddress = "0xd0e9a6deeB289bC20c5C09C2e37049D188C263e3"
 let winningNFTId = 17
