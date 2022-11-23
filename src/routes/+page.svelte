@@ -78,7 +78,7 @@
 	<meta name="author" content="Block Starz">
 	<meta name="keywords" content="lotto, lottery, crypto, polygon, bsc, blockchain, decentralized, 
 	game, nft, network, message, global, defi, network, defi lotto, defi lottery, finance, eth, 
-	ethereum, gambling, prize, win, winning, nft lottery, nft lotto, nfts">
+	ethereum, gambling, prize, win, winning, nft lottery, nft lotto, nfts, million">
 	<meta name="description" content="DeFi Lotto is a decentralized NFT based lottery platform where users can mint NFT tickets and win prizes up to 1 Million Dollars in stable coins.">
 	<meta property="og:image" content="img/logo.png">
 	<meta property="og:title" content="DeFi Lotto">
