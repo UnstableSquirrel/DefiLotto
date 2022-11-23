@@ -54,7 +54,7 @@
 			}
 	}
 
-	console.log(Winners)
+	// console.log(Winners)
 
 </script>
 
