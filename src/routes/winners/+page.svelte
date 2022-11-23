@@ -50,7 +50,7 @@ let txHash = "0x8354b056eca474d7a695ab976e5a44750730eb73c1ec2f8bf1f73c59f6c6f897
 		<div class="latest-winner-container">
 			<h1 style="font-size: 40px; font-weight: 700; color: white; margin: 10px 0px 10px 0px; text-align: center !important;">Latest Winner</h1>
 			<div>
-				<img style="margin: 0px 0px 10px 0px; width: 40px; height: 40px;" src="img/polygon.png" alt="Polygon">
+				<img style="margin: 0px 0px 10px 0px; width: 40px; height: 40px;" src="img/Polygon.png" alt="Polygon">
 				<p >Winning Ticket: <span style="color: #fba93f; font-size: 18px; font-weight: 700;">{winningNFTId}</span></p>
 				<p>Date: <span style="color: #fba93f; font-size: 18px; font-weight: 700;">Nov 18, 2022</span></p>
 				<div class="line"></div>

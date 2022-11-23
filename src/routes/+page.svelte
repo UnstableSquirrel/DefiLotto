@@ -227,11 +227,11 @@
 
 		<div class="select-chain-lotteries">
 			<div on:click="{() => toggleNetwork(1)}" style="background-color:{background1};">
-				<img style="border:{border1};" src="img/polygon.png" alt="Polygon">
+				<img style="border:{border1};" src="img/Polygon.png" alt="Polygon">
 					<p style="font-weight: {fontWeight1}; color: {color1};">Polygon Network</p>
 			</div>
 			<div on:click="{() => toggleNetwork(2)}" style="background-color:{background2};">
-				<img style="border:{border2};" src="img/bsc.png" alt="Binance Smart Chain">
+				<img style="border:{border2};" src="img/BSC.png" alt="Binance Smart Chain">
 				<p style="font-weight: {fontWeight2}; color: {color2};">Binance Smart Chain</p>
 			</div>
 		</div>
