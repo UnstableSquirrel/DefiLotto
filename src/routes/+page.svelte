@@ -138,9 +138,7 @@
 					</div>
 					<div class="feature-text-container">
 						<h3>True Randomness</h3>
-						<p>To guarante fairness in all our lotteries, we use Chainlink's 
-							VRF
-						</p>
+						<p>To guarantee fairness in all our lotteries, we use Chainlink's VRF</p>
 					</div>
 				</div>
 			</div>
@@ -161,7 +159,7 @@
 					</div>
 					<div class="feature-text-container">
 						<h3>Open</h3>
-						<p>DeFi Lotto is fully decentralized and open for everyone globally</p>
+						<p>DeFi Lotto is fully decentralized and open for everyone around the world.</p>
 					</div>
 				</div>
 			</div>
@@ -192,7 +190,7 @@
 				<!-- <img src="/img/3.png" alt="Icon1"> -->
 				<h1>1</h1>
 				<h2>Buy Ticket</h2>
-				<p>Buy a ticket of your choice. We have various prize and ticket ranges from which you can choose from.</p>
+				<p>Pick the competition you'd like to enter and buy a ticket!</p>
 			</div>
 			<div>
 				<!-- <img src="/img/3.png" alt="Icon2"> -->
@@ -204,15 +202,14 @@
 				<!-- <img src="/img/3.png" alt="Icon3"> -->
 				<h1>3</h1>
 				<h2>Win Prize</h2>
-				<p>If you happen to be amongst the lucky winners, the prize amount will be transfered in USDC directly and immediately into the wallet that holds the winning NFT.</p>
+				<p>If you happen to be a lucky winner, your prize will be transferred in the specified token directly and immediately into the wallet that holds the winning NFT.</p>
 			</div>
 		</div>
 
 		<div class="section2-explanation">
 			<p>
-				Our DeFi lottery aims to give everyone a fair and equal chance of making a good amount of money. Normal lotteries usually have a winning ratio in the range from 1:50,000,000 to 1:250,000,000.
-				It is far more likely for you to win one of our prize pools than winning the lottery, and this is due to our game design. The majority of the money that is generated through the NFT lottery ticket 
-				sales is given back to the community, blessing someone with a fortune guaranteed.
+				DeFi Lottery aims to give everyone a fair and equal chance of making it. Normal lotteries usually have a winning ratio in the range from 1:50,000,000 to 1:250,000,000. 
+				Defi Lotto boasts much better odds and the majority of the money generated through NFT sales is given back to the players as prizes.
 			</p>
 		</div>
 
@@ -238,6 +235,8 @@
 
 		<div class="lotteries-container">
 
+			{#if selectedNetwork == 1}
+
 			<div class="ticket-prize-sec">$1.50 Tickets</div>
 
 			<div class="lotteries-1">
@@ -247,12 +246,12 @@
 						<p>Win</p>
 						<h1>$1,000</h1>
 					</div>
-					<img src="/img/usdc.png" alt="USDC">
+					<img class="img1" src="/img/usdc.png" alt="USDC">
 					<div>
 						<p>Ticket Prize: <span>$1.50</span></p>
 						<p>Total Tickets: <span>1,000</span></p>
 						<p>Winning Probability: <span>1:1,000</span></p>
-						<a href="/"><button disabled="disabled">Get Tickets</button></a>
+						<a href="/polygon-dolphin-contest-1"><button>Get Tickets</button></a>
 					</div>
 				</div>
 
@@ -261,12 +260,12 @@
 						<p>Win</p>
 						<h1>$10,000</h1>
 					</div>
-					<img src="/img/usdc.png" alt="USDC">
+					<img class="img1" src="/img/usdc.png" alt="USDC">
 					<div>
 						<p>Ticket Prize: <span>$1.50</span></p>
 						<p>Total Tickets: <span>10,000</span></p>
 						<p>Winning Probability: <span>1:10,000</span></p>
-						<a href="/"><button disabled="disabled">Get Tickets</button></a>
+						<a href="/polygon-dolphin-contest-2"><button>Get Tickets</button></a>
 					</div>
 				</div>
 
@@ -283,12 +282,12 @@
 						<p>Win</p>
 						<h1>$3,500</h1>
 					</div>
-					<img src="/img/usdc.png" alt="USDC">
+					<img class="img1" src="/img/usdc.png" alt="USDC">
 					<div>
 						<p>Ticket Prize: <span>$5</span></p>
 						<p>Total Tickets: <span>1,000</span></p>
 						<p>Winning Probability: <span>1:1,000</span></p>
-						<a href="/"><button disabled="disabled">Get Tickets</button></a>
+						<a href="/polygon-shark-contest-1"><button>Get Tickets</button></a>
 					</div>
 				</div>
 
@@ -297,12 +296,12 @@
 						<p>Win</p>
 						<h1>$35,000</h1>
 					</div>
-					<img src="/img/usdc.png" alt="USDC">
+					<img class="img1" src="/img/usdc.png" alt="USDC">
 					<div>
 						<p>Ticket Prize: <span>$5</span></p>
 						<p>Total Tickets: <span>25,000</span></p>
 						<p>Winning Probability: <span>1:10,000</span></p>	
-						<a href="/"><button disabled="disabled">Get Tickets</button></a>
+						<a href="/polygon-shark-contest-2"><button>Get Tickets</button></a>
 					</div>
 				</div>
 
@@ -319,12 +318,12 @@
 						<p>Win</p>
 						<h1>$10,000</h1>
 					</div>
-					<img src="/img/usdc.png" alt="USDC">
+					<img class="img1" src="/img/usdc.png" alt="USDC">
 					<div>
 						<p>Ticket Prize: <span>$15</span></p>
 						<p>Total Tickets: <span>1,000</span></p>
 						<p>Winning Probability: <span>1:1,000</span></p>
-						<a href="/"><button disabled="disabled">Get Tickets</button></a>
+						<a href="/polygon-whale-contest-1"><button>Get Tickets</button></a>
 					</div>
 				</div>
 
@@ -333,22 +332,141 @@
 						<p>Win</p>
 						<h1>$100,000</h1>
 					</div>
-					<img src="/img/usdc.png" alt="USDC">
+					<img class="img1" src="/img/usdc.png" alt="USDC">
 					<div>
 						<p>Ticket Prize: <span>$15</span></p>
 						<p>Total Tickets: <span>10,000</span></p>
 						<p>Winning Probability: <span>1:10,000</span></p>
-						<a href="/"><button disabled="disabled">Get Tickets</button></a>
+						<a href="/polygon-whale-contest-2"><button>Get Tickets</button></a>
 					</div>
 				</div>
 				
 			</div>
 
+			{/if}
+
+
+
+
+
+
+
+
+
+			{#if selectedNetwork == 2}
+
+			<div class="ticket-prize-sec">$1.50 Tickets</div>
+
+			<div class="lotteries-1">
+
+				<div>
+					<div class="prize-top">
+						<p>Win</p>
+						<h1>$1,000</h1>
+					</div>
+					<img class="img2" src="/img/busd.png" alt="BUSD">
+					<div>
+						<p>Ticket Prize: <span>$1.50</span></p>
+						<p>Total Tickets: <span>1,000</span></p>
+						<p>Winning Probability: <span>1:1,000</span></p>
+						<a href="/bnb-dolphin-contest-1"><button>Get Tickets</button></a>
+					</div>
+				</div>
+
+				<div>
+					<div class="prize-top">
+						<p>Win</p>
+						<h1>$10,000</h1>
+					</div>
+					<img class="img2" src="/img/busd.png" alt="BUSD">
+					<div>
+						<p>Ticket Prize: <span>$1.50</span></p>
+						<p>Total Tickets: <span>10,000</span></p>
+						<p>Winning Probability: <span>1:10,000</span></p>
+						<a href="/bnb-dolphin-contest-2"><button>Get Tickets</button></a>
+					</div>
+				</div>
+
+			</div>
+
+
+			<div class="ticket-prize-sec">$5 Tickets</div>
+
+
+			<div class="lotteries-2">
+				
+				<div>
+					<div class="prize-top">
+						<p>Win</p>
+						<h1>$3,500</h1>
+					</div>
+					<img class="img2" src="/img/busd.png" alt="BUSD">
+					<div>
+						<p>Ticket Prize: <span>$5</span></p>
+						<p>Total Tickets: <span>1,000</span></p>
+						<p>Winning Probability: <span>1:1,000</span></p>
+						<a href="/bnb-shark-contest-1"><button>Get Tickets</button></a>
+					</div>
+				</div>
+
+				<div>
+					<div class="prize-top">
+						<p>Win</p>
+						<h1>$35,000</h1>
+					</div>
+					<img class="img2" src="/img/busd.png" alt="BUSD">
+					<div>
+						<p>Ticket Prize: <span>$5</span></p>
+						<p>Total Tickets: <span>25,000</span></p>
+						<p>Winning Probability: <span>1:10,000</span></p>	
+						<a href="/bnb-shark-contest-2"><button>Get Tickets</button></a>
+					</div>
+				</div>
+
+			</div>
+
+
+
+			<div class="ticket-prize-sec">$15 Tickets</div>
+
+			<div class="lotteries-3">
+				
+				<div>
+					<div class="prize-top">
+						<p>Win</p>
+						<h1>$10,000</h1>
+					</div>
+					<img class="img2" src="/img/busd.png" alt="BUSD">
+					<div>
+						<p>Ticket Prize: <span>$15</span></p>
+						<p>Total Tickets: <span>1,000</span></p>
+						<p>Winning Probability: <span>1:1,000</span></p>
+						<a href="/bnb-whale-contest-1"><button>Get Tickets</button></a>
+					</div>
+				</div>
+
+				<div>
+					<div class="prize-top">
+						<p>Win</p>
+						<h1>$100,000</h1>
+					</div>
+					<img class="img2" src="/img/busd.png" alt="BUSD">
+					<div>
+						<p>Ticket Prize: <span>$15</span></p>
+						<p>Total Tickets: <span>10,000</span></p>
+						<p>Winning Probability: <span>1:10,000</span></p>
+						<a href="/bnb-whale-contest-2"><button>Get Tickets</button></a>
+					</div>
+				</div>
+				
+			</div>
+
+			{/if}
 			<!-- <div>
 				<div>
 					<h1>$10,000</h1>
 				</div>
-				<img src="/img/usdc.png" alt="USDC">
+				<img src="/img/busd.png" alt="USDC">
 				<div>
 					<p>Mint a ticket for $15 from a total set of 1000 tickets in order to have a chance of winning 10,000 $USDC. Winning probability per ticket is 1:1,000.</p>
 					<a href="/"><button disabled="disabled">Get Tickets</button></a>
@@ -390,15 +508,15 @@
 
 		<div class="roadmap-container">
 			<div class="roadmap-paragraph">
-				<p>Growing the community and ecosystem with lottery raffles.</p>
+				<p>Grow the community and ecosystem with lottery raffles.</p>
 				<br>
 				<p>Increase the prize pools and total NFT mints.</p>
 				<br>
 				<p>Build out the Lottery to be adapted by the entire crypto space.</p>
 				<br>
-				<p>Slowly grow and increase the outreach.</p>
+				<p>Bring in new players.</p>
 				<br>
-				<p>Audit the core lottery contract and upcoming ones.</p>
+				<p>Audit the core lottery contract.</p>
 			</div>
 			<div class="circle-style">
 				<h1>1</h1>
@@ -411,7 +529,7 @@
 					and further development that will be built out and integrated into the ecosystem.
 				</p>
 				<br>
-				<p>Make staking with certain limited NFTs possible.</p>
+				<p>Make staking with certain limited NFTs.</p>
 			</div>
 			<div class="roadmap-paragraph">
 				<p>Create a staking platform. </p>
@@ -431,7 +549,7 @@
 			<div class="roadmap-paragraph">
 				<p>Build out more income streams for stakers to earn passive income.</p>
 				<br>
-				<p>Slowly look into building a decentralized casino platform in additon to our lottery platform.</p>
+				<p>Build a decentralized casino platform in addition to our lottery platform.</p>
 			</div>
 			<div class="roadmap-paragraph">
 				<p>Look for other strong projects to partner with.</p>
@@ -445,7 +563,7 @@
 				<h1>6</h1>
 			</div>
 			<div class="roadmap-paragraph">
-				<p>Test other income streams and advance the platform by listeing to the community.</p>
+				<p>Test other income streams and advance the platform by listening to the community.</p>
 				<br>
 				<p>Hire more staff and solidify the ecosystem.</p>
 			</div>
@@ -698,6 +816,10 @@
 		width: 200px !important;
 		height: 480px !important;
 	}
+
+	.img2 {
+		margin: -61px 0px 5px 25px !important;;
+	}
 /* 
 	.lotteries-container > div > div:nth-child(2) {
 		width: 200px !important;
@@ -709,7 +831,7 @@
 		height: 535px !important;
 	} */
 
-	.lotteries-container > div > div > img {
+	.img1 {
 		margin: -80px 0px 0px 20px !important;
 	}
 
@@ -1278,10 +1400,16 @@
 		z-index: 2;
 	}
 
-	.lotteries-container > div > div > img {
+	.img1 {
 		margin: -80px 0px 0px 70px;
 		width: 150px;
 		height: 150px;
+	}
+
+	.img2 {
+		margin: -60px 0px 10px 70px;
+		width: 140px;
+		height: 120px;
 	}
 
 	.lotteries-container > div > div > div:nth-child(3) {
@@ -1324,9 +1452,9 @@
 		-moz-border-radius: 999px;
 		-ms-border-radius: 999px;
 		-o-border-radius: 999px;
-		/* background-image: -moz-linear-gradient(86deg, #ec038b 0%, #fb6468 44%, #fbb936 100%);
+		background-image: -moz-linear-gradient(86deg, #ec038b 0%, #fb6468 44%, #fbb936 100%);
 		background-image: -webkit-linear-gradient(86deg, #ec038b 0%, #fb6468 44%, #fbb936 100%);
-		background-image: -ms-linear-gradient(86deg, #ec038b 0%, #fb6468 44%, #fbb936 100%); */
+		background-image: -ms-linear-gradient(86deg, #ec038b 0%, #fb6468 44%, #fbb936 100%);
 		box-shadow: 0px 17px 40px 0px rgba(124, 78, 25, 0.35);
 		-webkit-transition: background-size 0.3s;
 		-o-transition: background-size 0.3s;
@@ -1335,19 +1463,19 @@
 		
 	}
 
-	/* .lotteries-container > div > div:nth-child(3) > a > button:hover {
+	.lotteries-container > div > div > div:nth-child(3) > a > button:hover {
 		cursor: pointer;
 		background: #fb6468;
 		transform: scale(1.02);
 		transition: all 0.2s linear;
 	}
 
-	.lotteries-container > div > div:nth-child(3) > a > button:active {
+	.lotteries-container > div > div > div:nth-child(3) > a > button:active {
 		cursor: pointer;
 		background: #fb6468;
 		transform: scale(0.97);
 		transition: all 0.1s linear;
-	} */
+	}
 
 
 

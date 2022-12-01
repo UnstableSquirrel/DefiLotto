@@ -93,15 +93,16 @@
 
 	<section class="section1">
 		<h1>About Us</h1>
-		<p>Here you can find all the necessary informations about us and our product.</p>
+		<p>Here you can find all the necessary information about us and our product.</p>
 
 		<div class="main-container">
-			<div class="title-top">A few words about us</div>
+			<div class="title-top">A few words about us:</div>
 			<h2 class="title">We want you to make it!</h2>
-			<p class="para">And we mean that. We are building a community and an ecosystem where everyone can have a fair chance of winning.
-				With win probabilities ranging from 1:1,000 to 1:10,000 we are giving everyone a fair chance in making it in crypto, without the risk of a rug, mishandled user funds
-				or similar things. All transactions with our lottery contracts are on chain and traceable, verifiable and the winner rolls are generated through Chainlink's 
-				Verifiable Random Function (VRF). Everyone around the world can participate, everyone can win, it's all decentralized, fair, and secure.
+			<p class="para">
+				And we mean that. We are building a community and an ecosystem where everyone can have a fair chance of winning. 
+				With win probabilities ranging from 1:1,000 to 1:10,000, we are giving everyone an equal chance at making it in crypto, without the risk of a rug 
+				or mishandled user funds. All lottery transactions happen on-chain and are totally traceable, verifiable, and reliable. Winning picks are generated 
+				through Chainlink's Verifiable Random Function (VRF). Everyone around the world can participate, and everyone can win.
 			</p>
 		</div>
 	</section>
@@ -116,18 +117,21 @@
 			<span>An explanation on</span>
 			<h2>What makes us different?</h2>
 			<p>
-				We aren't just a lotto portal. We are building a whole ecosystem around our DeFi NFT Lottery, around the world, and for everyone to participate, stake, invest
+				We aren't just a lotto portal. We're building a whole ecosystem around our DeFi NFT Lottery so that everyone can participate, stake, invest, 
 				and get rewarded while doing so.
 			</p>
-			<p>We are mainly building for the community, and are actively listening when adding new features.
+			<p>
+				We are mainly building for our community, and are actively listening when adding new features.
 			</p>
 			<p>
-				Our DeFi Lottery is fully decentralized, secure, with true onchain randomness through Chainlink.
+				Our DeFi Lottery is fully decentralized, secure, with true on-chain randomness through Chainlink.
 			</p>
-			<p>From a token launch, a staking platform etc., we have many things planned for the future and are constantly working on improving
-				our ecosystem. 
+			<p>
+				We have many things planned for the future, including a token launch and staking features, and are constantly working on improving our ecosystem. 
 			</p>
-			<p>For more information about our plans take a look into our <a style="color: yellow; text-decoration: none;" href="/#Roadmap">Roadmap</a></p>
+			<p>
+				For more information about our plans take a look into our <a style="color: yellow; text-decoration: none;" href="/#Roadmap">Roadmap</a>
+			</p>
 		</div>
 
 	</section>
@@ -136,7 +140,7 @@
 
 		<div class="sec3-text">
 			<h2>Our FAQ</h2>
-			<p>To help clear out most questions regarding DeFi Lotto.</p>
+			<p>To help clear out the most common questions regarding DeFi Lotto.</p>
 		</div>
 
 		<div class="faq-main-container">
@@ -148,21 +152,19 @@
 				</div>
 				<div class="col-text" style="height: {height1}%">
 					<p style="height: {height1}%; font-size: {font1}px">
-						All you need is enough gas of the current chain on the lottery is held in order to 
-						pay for gas fees and enough USDC to pay for the amount of tickets you would like.
+						You'll need enough of the chain's gas token to pay for the transaction and enough of the stablecoin required for the ticket.
 					</p>
 				</div>
 			</div>
 
 			<div class="faq-container">
 				<div class="faq-header" on:click="{() => toggle2()}">
-					<h2>How does the prize get distributed, can I claim my prize?</h2>
+					<h2>How does the prize get distributed? When can I claim my prize?</h2>
 					<p style="transform: rotate({deg2}deg);">❯</p>
 				</div>
 				<div class="col-text" style="height: {height2}%">
 					<p style="height: {height2}%; font-size: {font2}px">
-						Each raffle prize is automatically send to the owner's wallet of the winning NFT number. The winning NFT number is 
-						determined through Chainlink's Verifiable Random Function guaranteeing true randomness.
+						Each raffle prize is automatically send to the wallet holding the winning NFT, as determined by Chainlink's Verifiable Random Function.
 					</p>
 				</div>
 			</div>
@@ -174,24 +176,27 @@
 				</div>
 				<div class="col-text" style="height: {height3}%">
 					<p style="height: {height3}%; font-size: {font3}px">
-						Mainstream lotteries can have chances of around 1:300,000,000. With DeFi Lotto your chances in winning a raffle
-						can be ranging from 1:1,000 to 1:10,000 - depending on the lottery you choose.  
+						Mainstream lotteries can have chances of around 1:300,000,000. With DeFi Lotto your chances of winning a raffle can range 
+						from 1:1,000 to 1:10,000, depending on the lottery you choose. 
 					</p>
 				</div>
 			</div>
 
-			<!-- <div class="faq-container">
+			<div class="faq-container">
 				<div class="faq-header" on:click="{() => toggle4()}">
-					<h2>How do I deposit funds into my Rifa Lottos account?</h2>
+					<h2>How does the whole NFT lottery process work?</h2>
 					<p style="transform: rotate({deg4}deg);">❯</p>
 				</div>
 				<div class="col-text" style="height: {height4}%">
 					<p style="height: {height4}%; font-size: {font4}px">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-						Quis ipsum suspendisse ultrices gravida. Risus commodo viverra  maecenas accumsan lacus vel facilisis. 
+						First users mint NFT lottery tickets from a certain competition until the max amount that can be minted is reached. 
+						A function is then called which sends a request to Chainlink VRF in order to receive a random number in the range 
+						from 1 to the max mint amount of the current competition. The number that is returned from Chainlink is the winner, 
+						and the prize is automatically sent to the wallet that holds the winning NFT. The owner of that NFT is determined by 
+						the same function that called the random function. The competition is then finished and a new one will take its place.
 					</p>
 				</div>
-			</div> -->
+			</div>
 
 		</div>
 

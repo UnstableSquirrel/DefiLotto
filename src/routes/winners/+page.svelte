@@ -45,7 +45,7 @@ let txHash = "0x8354b056eca474d7a695ab976e5a44750730eb73c1ec2f8bf1f73c59f6c6f897
 
 	<section class="section1">
 		<h1>Winner List</h1>
-		<p>Here you can check all the previous winners from all our lottery rolls.</p>
+		<p>View the newest lucky wallet address and all previous winners from all our lottery rolls.</p>
 
 		<div class="latest-winner-container">
 			<h1 style="font-size: 40px; font-weight: 700; color: white; margin: 10px 0px 10px 0px; text-align: center !important;">Latest Winner</h1>
@@ -82,7 +82,7 @@ let txHash = "0x8354b056eca474d7a695ab976e5a44750730eb73c1ec2f8bf1f73c59f6c6f897
 		<div class="top-sec2">
 			<h2>All Winners</h2>
 			<p>
-				Above is a collection of all the previous winners from every DeFi Lottery held in the past. 
+				Here is a collection of all the previous winners from every DeFi Lottery held in the past. 
 			</p>
 		</div>
 
