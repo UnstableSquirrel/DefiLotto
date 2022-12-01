@@ -255,7 +255,7 @@
 			<div class="right">
 				<a href="/">Home</a>
 				<div class="dropdown">
-					<a href="/lottery1">Lotteries</a>
+					<a href="/#Lotteries">Lotteries</a>
 					<!-- <div class="dropdown-content">
 						<a href="/">Link 1</a>
 						<a href="/">Link 2</a>

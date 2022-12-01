@@ -100,7 +100,7 @@
 				<h2 class="top-title2">Really make it</h2>
 				<p>Are you tired of getting rugged by every other project? Do you want to have a fair chance making it? With DeFi Lotto you can actually become a crypto millionaire.</p>
 				<div class="buy-button-container">
-				  <a href="/lottery1" class="btn1">BUY A TICKET NOW</a>
+				  <a href="/#Lotteries" class="btn1">BUY A TICKET NOW</a>
 				  <!-- <a class="video-btn" href="/" data-rel="lightcase:myCollection"><i class="fas fa-play"></i></a> -->
 				</div>
 			</div>
@@ -215,7 +215,7 @@
 
 	</section>
 
-	<section class="section3">
+	<section id="Lotteries" class="section3">
 		<div class="section-header">
 			<span class="section-sub-title">Choose from one of</span>
 			<h2 class="section-title">Our Lotteries</h2>
