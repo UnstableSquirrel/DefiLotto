@@ -107,23 +107,24 @@ let busdAddress = "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56"
 		const contract2 = new $web3.eth.Contract(busdABI, busdAddress)
 
 		const allowance = await contract2.methods.allowance($selectedAccount, CONTRACT).call({ from: $selectedAccount })
-		// console.log(allowance)
+		console.log(allowance)
+		// console.log(mintPayment)
 
-		if (allowance < mintPayment) {
-			const approve = await contract2.methods.approve(CONTRACT, mintPayment).send({ from: $selectedAccount, gasPrice : 35000000000, gasLimit: 200000 })
+		if (allowance < BigInt(mintPayment)) {
+			const approve = await contract2.methods.approve(CONTRACT, BigInt(mintPayment)).send({ from: $selectedAccount, gasPrice : 5, gasLimit: 200000 })
 			// altert("approval is pending, wait until the transaction goes through before buying a ticket!")
 		}
-		if (allowance >= mintPayment) {
+		if (allowance >= BigInt(mintPayment)) {
 			if (amount < 5) {
-				mint = await contract.methods.mint($selectedAccount, amount).send({ from: $selectedAccount, gasPrice : 55000000000, gasLimit: 700000})
+				mint = await contract.methods.mint($selectedAccount, amount).send({ from: $selectedAccount, gasPrice : 5, gasLimit: 700000})
 				console.log(mint)
 			}
 			if ((amount >= 5) && (amount <= 10)) {
-				mint = await contract.methods.mint($selectedAccount, amount).send({ from: $selectedAccount, gasPrice : 55000000000, gasLimit: 1500000})
+				mint = await contract.methods.mint($selectedAccount, amount).send({ from: $selectedAccount, gasPrice : 5, gasLimit: 1500000})
 				console.log(mint)
 			}
 			if ((amount > 10) && (amount <= 20)) {
-				mint = await contract.methods.mint($selectedAccount, amount).send({ from: $selectedAccount, gasPrice : 55000000000, gasLimit: 2000000})
+				mint = await contract.methods.mint($selectedAccount, amount).send({ from: $selectedAccount, gasPrice : 5, gasLimit: 2000000})
 				console.log(mint)
 			}
 		}

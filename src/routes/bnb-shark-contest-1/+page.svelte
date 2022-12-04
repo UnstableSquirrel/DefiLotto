@@ -109,11 +109,11 @@ let busdAddress = "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56"
 		const allowance = await contract2.methods.allowance($selectedAccount, CONTRACT).call({ from: $selectedAccount })
 		// console.log(allowance)
 
-		if (allowance < mintPayment) {
-			const approve = await contract2.methods.approve(CONTRACT, mintPayment).send({ from: $selectedAccount, gasPrice : 35000000000, gasLimit: 200000 })
+		if (allowance < BigInt(mintPayment)) {
+			const approve = await contract2.methods.approve(CONTRACT, BigInt(mintPayment)).send({ from: $selectedAccount, gasPrice : 35000000000, gasLimit: 200000 })
 			// altert("approval is pending, wait until the transaction goes through before buying a ticket!")
 		}
-		if (allowance >= mintPayment) {
+		if (allowance >= BigInt(mintPayment)) {
 			if (amount < 5) {
 				mint = await contract.methods.mint($selectedAccount, amount).send({ from: $selectedAccount, gasPrice : 55000000000, gasLimit: 700000})
 				console.log(mint)
