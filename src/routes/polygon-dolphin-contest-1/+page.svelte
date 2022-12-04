@@ -142,11 +142,23 @@ let usdcAddress = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
 			<i style="display: none;">get Data</i>
 			{:then connected}
 			<i style="display: none;">get Data</i>
-			<div class="cover" style="display: {display};">
-				<div>
-					Minted Out!
+
+				{#if chainId != 137}
+				<div class="cover" style="display: {display};">
+					<div>
+						Wrong Network
+					</div>
 				</div>
-			</div>
+				{/if}
+
+				{#if chainId == 137}
+				<div class="cover" style="display: {display};">
+					<div>
+						Minted Out!
+					</div>
+				</div>
+				{/if}
+
 			{/await}
 			
 
@@ -159,7 +171,7 @@ let usdcAddress = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
 					<h2>{parseInt(JSON.stringify(prize).slice(1, prize.length -5)).toLocaleString('en-IN')} $USDC</h2>
 				</div>
 				<div class="img-container">
-					<img src="img/Ticket2.png" alt="Ticket">
+					<img src="Tickets/Polygon/polygon1.png" alt="Ticket">
 				</div>
 				<div class="content-container">
 					<!-- <h3>Enter now for a chance to win</h3>
@@ -435,9 +447,12 @@ let usdcAddress = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
 	}
 
 	.img-container {
+		display: grid;
 		margin: 0px 0px 25px 0px !important;
-		width: 170px !important;
-		height: 150px !important;
+		align-items: center !important;
+		justify-items: center !important;
+		/* width: 170px !important;
+		height: 150px !important; */
 	}
 
 	.info-box-container {
@@ -453,10 +468,10 @@ let usdcAddress = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
 	}
 
 	.img-container > img {
-		margin: 40px 0px 0px -20px !important;
+		margin: 40px 0px 0px 0px !important;
 		max-width: 250px !important;
-		height: 80px !important;
-		transform: rotate(-20deg) !important;
+		/* height: 80px !important; */
+		/* transform: rotate(-20deg) !important; */
 	}
 }
 
@@ -501,7 +516,7 @@ let usdcAddress = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
 		/* width: 500px; */
 		/* height: 1000px; */
 		background-color: #12023e;
-		padding: 10px 20px;
+		padding: 10px 20px 50px 10px;
 		margin: 0px 0px -250px 0px;
 		border: 5px solid #ec038b;
 		border-radius: 10px;
@@ -516,19 +531,21 @@ let usdcAddress = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
 	}
 
 	.img-container {
-		width: 350px;
-		height: 300px;
-		background-color: #5a4bcc;
-		padding: 15px;
-    	border-radius: 25px;
+		max-width: 350px;
+		width: 100%;
+		height: auto;
+		/* background-color: #5a4bcc; */
+		/* padding: 15px; */
+    	/* border-radius: 25px; */
 		margin: 0px 25px 0px 5px;
 	}
 
 	.img-container > img {
-		margin: 90px 0px 0px 0px;
+		margin: 0px 0px 0px 0px;
 		max-width: 350px;
-		height: 140px;
-		transform: rotate(-45deg);
+		width: 100%;
+		height: auto;
+		/* transform: rotate(-45deg); */
 	}
 
 	.lottery-container > div:nth-child(1) > h3 {
@@ -549,7 +566,7 @@ let usdcAddress = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
 		font-size: 16px;
 		color: #c4cbf9;
 		line-height: 1.7;
-		margin: 0px 0px 10px 0px;
+		margin: 50px 0px 10px 0px;
 	}
 
 	.tickets-sold {

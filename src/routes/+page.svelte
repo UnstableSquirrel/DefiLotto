@@ -237,7 +237,11 @@
 
 			{#if selectedNetwork == 1}
 
-			<div class="ticket-prize-sec">$1.50 Tickets</div>
+			<div class="ticket-prize-sec">
+				<p>Dolphin Competition</p>
+				<img src="img/dolphin.png" alt="Dolphin">
+				<p><span>$1.50 Tickets</span></p>
+			</div>
 
 			<div class="lotteries-1">
 
@@ -272,7 +276,11 @@
 			</div>
 
 
-			<div class="ticket-prize-sec">$5 Tickets</div>
+			<div class="ticket-prize-sec">
+				<p>Shark Competition</p>
+				<img src="img/shark.png" alt="Shark">
+				<p><span>$5 Tickets</span></p>
+			</div>
 
 
 			<div class="lotteries-2">
@@ -309,7 +317,12 @@
 
 
 
-			<div class="ticket-prize-sec">$15 Tickets</div>
+			<div class="ticket-prize-sec">
+				<p>Whale Competition</p>
+				<img src="img/whale.png" alt="Whale">
+				<p><span>$15 Tickets</span></p>
+			</div>
+
 
 			<div class="lotteries-3">
 				
@@ -355,7 +368,14 @@
 
 			{#if selectedNetwork == 2}
 
-			<div class="ticket-prize-sec">$1.50 Tickets</div>
+
+
+			<div class="ticket-prize-sec">
+				<p>Dolphin Competition</p>
+				<img src="img/dolphin.png" alt="Dolphin">
+				<p><span>$1.50 Tickets</span></p>
+			</div>
+
 
 			<div class="lotteries-1">
 
@@ -390,7 +410,12 @@
 			</div>
 
 
-			<div class="ticket-prize-sec">$5 Tickets</div>
+
+			<div class="ticket-prize-sec">
+				<p>Shark Competition</p>
+				<img src="img/shark.png" alt="Shark">
+				<p><span>$5 Tickets</span></p>
+			</div>
 
 
 			<div class="lotteries-2">
@@ -427,7 +452,12 @@
 
 
 
-			<div class="ticket-prize-sec">$15 Tickets</div>
+			<div class="ticket-prize-sec">
+				<p>Whale Competition</p>
+				<img src="img/whale.png" alt="Whale">
+				<p><span>$15 Tickets</span></p>
+			</div>
+
 
 			<div class="lotteries-3">
 				
@@ -577,11 +607,6 @@
 <style>
 
 
-@media (min-width: 901px) and (max-width: 1100px) {
-	.lotteries-container > div {
-		grid-template-columns: auto auto !important;
-	}
-}
 
 @media (min-width: 731px) and (max-width: 900px) {
 	.section1 {
@@ -589,10 +614,14 @@
 	}
 
 	.lotteries-container > div {
-		grid-template-columns: auto auto !important;
+		grid-template-columns: auto !important;
+	}
+
+	.ticket-prize-sec:nth-child(3) > p:nth-child(3) {
+		margin: -55px 0px 0px 60px !important;
+		word-spacing: 55px !important;
 	}
 }
-
 
 @media (min-width: 525px) and (max-width: 790px) {
 
@@ -611,6 +640,11 @@
 
 	.feature-box-container2 {
 		grid-row: 2 / span 2;
+	}
+
+	.ticket-prize-sec:nth-child(3) > p:nth-child(3) {
+		margin: -55px 0px 0px 60px !important;
+		word-spacing: 55px !important;
 	}
 }
 
@@ -635,7 +669,6 @@
 		grid-column: 1 / span 1;
 		margin: 0px 0px 0px 0px !important;
 	}
-
 }
 
 @media (min-width: 601px) and (max-width: 730px) {
@@ -655,6 +688,29 @@
 @media (min-width: 484px) and (max-width: 600px) {
 	.section1 {
 		padding: 100px 0px 25px 20px !important;
+	}
+
+	.ticket-prize-sec > p:nth-child(1) {
+		font-size: 30px !important;
+	}
+
+	.ticket-prize-sec:nth-child(1) > p:nth-child(3) {
+		margin: -55px 0px 0px 25px !important;
+		word-spacing: 50px !important;
+	}
+
+	.ticket-prize-sec:nth-child(3) > p:nth-child(3) {
+		margin: -55px 0px 0px 40px !important;
+		word-spacing: 55px !important;
+	}
+
+	.ticket-prize-sec:nth-child(5) > p:nth-child(3) {
+		margin: -55px 0px 0px 45px !important;
+		word-spacing: 55px !important;
+	}
+
+	.ticket-prize-sec > p:nth-child(3) > span {
+		font-size: 20px !important;
 	}
 
 	.card-section {
@@ -715,6 +771,29 @@
 
 	.lotteries-container > div {
 		grid-template-columns: auto !important;
+	}
+
+	.ticket-prize-sec > p:nth-child(1) {
+		font-size: 30px !important;
+	}
+
+	.ticket-prize-sec > p:nth-child(3) {
+		margin: -55px 0px 0px 25px !important;
+		word-spacing: 50px !important;
+	}
+
+	.ticket-prize-sec > p:nth-child(3) > span {
+		font-size: 20px !important;
+	}
+
+	.ticket-prize-sec > p:nth-child(3) {
+		margin: -55px 0px 0px 45px !important;
+		word-spacing: 60px !important;
+	}
+
+	.ticket-prize-sec:nth-child(1) > p:nth-child(3) {
+		margin: -55px 0px 0px 25px !important;
+		word-spacing: 50px !important;
 	}
 
 	.roadmap-container {
@@ -800,8 +879,35 @@
 	}
 
 	.ticket-prize-sec {
-		font-size: 33px !important;
 		padding: 0px 0px 0px 0px !important;
+	}
+
+	.ticket-prize-sec > p:nth-child(1) {
+		font-size: 20px !important;
+	}
+
+	.ticket-prize-sec > p:nth-child(3) {
+		margin: -55px 0px 0px 30px !important;
+		word-spacing: 55px !important;
+	}
+
+	.ticket-prize-sec:nth-child(1) > p:nth-child(3) {
+		margin: -55px 0px 0px 25px !important;
+		word-spacing: 50px !important;
+	}
+
+	.ticket-prize-sec > p:nth-child(3) > span {
+		font-size: 15px !important;
+	}
+
+	.ticket-prize-sec:nth-child(3) > p:nth-child(3) {
+		margin: -55px 0px 0px 15px !important;
+		word-spacing: 45px !important;
+	}
+
+	.ticket-prize-sec:nth-child(5) > p:nth-child(3) {
+		margin: -55px 0px 0px 35px !important;
+		word-spacing: 45px !important;
 	}
 
 	.lotteries-container > div {
@@ -812,7 +918,7 @@
 		font-size: 38px !important;
 	}
 
-	.lotteries-container > div > div {
+	.lotteries-container > div > div  {
 		width: 200px !important;
 		height: 480px !important;
 	}
@@ -1348,21 +1454,81 @@
 
 	.ticket-prize-sec {
 		/* color: #ffb200; */
-		color: white;
-		font-size: 40px;
-		font-weight: 800 !important;
+		padding: 0px 10px 5px 10px !important;
+		display: grid;
+		justify-content: center;
+		align-items: center;
+		grid-template-columns: auto !important;
+	}
+
+	.ticket-prize-sec > img {
+		width: 50px;
+		height: 50px;
+	}
+
+	.ticket-prize-sec {
 		/* max-width: 400px; */
 		/* width: 70vw; */
 		background-image: linear-gradient(135deg, #5496ff 0%, #8739e6 100%);
 		/* background-image: linear-gradient(45deg, #d73df5 0%, #8f3df5 100%); */
-		height: 50px;
+		height: 120px;
 		border-radius: 5px;
 		align-self: center;
 		padding: 0px 0px 10px 0px;
 		margin: 100px 0px 0px 0px; 
 	}
 
-	.lotteries-container > div > div {
+	.ticket-prize-sec > p:nth-child(1) {
+		font-size: 40px;
+		font-weight: 800 !important;
+		color: white;
+	}
+
+	.ticket-prize-sec > p:nth-child(3) {
+		text-align: center;
+		margin: -55px 0px 0px 60px;
+		font-weight: 800 !important;
+		color: white;
+		word-spacing: 70px;
+	}
+
+	.ticket-prize-sec:nth-child(1) > p:nth-child(3) {
+		text-align: center;
+		margin: -55px 0px 0px 25px;
+		font-weight: 800 !important;
+		color: white;
+		word-spacing: 60px;
+	}
+
+	.ticket-prize-sec > p > span {
+		font-size: 25px;
+		font-weight: 800 !important;
+		color: #ffb200;
+	}
+
+	.lotteries-1 > div {
+		width: 300px;
+		height: 450px;
+		padding: 0px;
+		border-radius: 5px;
+		border: 5px solid #352882;
+		background-image: linear-gradient(0deg, #ec1379 0%, #6c0092 50%, #4c0859 100%);
+		box-shadow: 0px 0px 10px 10px #ff20883a;
+		margin: 25px;
+	}
+
+	.lotteries-2 > div {
+		width: 300px;
+		height: 450px;
+		padding: 0px;
+		border-radius: 5px;
+		border: 5px solid #352882;
+		background-image: linear-gradient(0deg, #ec1379 0%, #6c0092 50%, #4c0859 100%);
+		box-shadow: 0px 0px 10px 10px #ff20883a;
+		margin: 25px;
+	}
+
+	.lotteries-3 > div {
 		width: 300px;
 		height: 450px;
 		padding: 0px;

@@ -276,7 +276,7 @@
 
 		<div class="menu2-list" style="height: {height1}px">
 			<a on:click={toggleMenu} style="font-size: {height2}px" href="/">Home</a>
-			<a on:click={toggleMenu} style="font-size: {height2}px" href="/lottery1">Lotteries</a>
+			<a on:click={toggleMenu} style="font-size: {height2}px" href="/#Lotteries">Lotteries</a>
 			<a on:click={toggleMenu} style="font-size: {height2}px" href="/winners">Winners</a>
 			<a on:click={toggleMenu} style="font-size: {height2}px" href="/about">About</a>
 			<a on:click={toggleMenu} style="font-size: {height2}px;
