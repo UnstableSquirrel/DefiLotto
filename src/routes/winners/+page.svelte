@@ -92,7 +92,7 @@ let txHash = "0x8354b056eca474d7a695ab976e5a44750730eb73c1ec2f8bf1f73c59f6c6f897
 			<div class="winner">
 
 				<div class="winner-img-container">
-					<img src="/tickets/{winner.NFTId}.png" alt="Winning Lottery Ticket">
+					<img src="{winner.Src}" alt="Winning Lottery Ticket">
 				</div>
 
 				<div class="description-container">
