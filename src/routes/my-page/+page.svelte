@@ -113,7 +113,12 @@
 					const contract5 = new $web3.eth.Contract(polyABI5, polyContract5)
 					const contract6 = new $web3.eth.Contract(polyABI6, polyContract6)
 
-					// polygonWalletOfOwner1 = [1,5,7, 100, 3043, 10012]
+					// polygonWalletOfOwner1 = [7, 100]
+					// polygonWalletOfOwner2 = [5, 157]
+					// polygonWalletOfOwner3 = [11, 73, 220]
+					// polygonWalletOfOwner4 = [51, 457]
+					// polygonWalletOfOwner5 = [75, 723, 520]
+					// polygonWalletOfOwner6 = [521, 657]
 					polygonWalletOfOwner1 = await contract1.methods.walletOfOwner($selectedAccount).call()
 					polygonWalletOfOwner2 = await contract2.methods.walletOfOwner($selectedAccount).call()
 					polygonWalletOfOwner3 = await contract3.methods.walletOfOwner($selectedAccount).call()
