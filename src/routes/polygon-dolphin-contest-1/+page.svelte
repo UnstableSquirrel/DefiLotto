@@ -13,7 +13,9 @@ let usdcAddress = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
 	// 	connectToWeb3 = await evm.setProvider()
 	// });
 
+	let approved = false
 	let display
+	let allowedSpending = 0
 
 	const CONTRACT = "0xf5baB274F8465b477a4e40e9A5B617036DDB4288"
 	///// Variables derived from chain data //////
@@ -60,11 +62,27 @@ let usdcAddress = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
 	}
 
 	function increaseAmount() {
-		amount++
+		if(amount <= 19) {
+			amount++
+		}
+		if (allowedSpending >= amount) {
+			approved = true
+		}
+		if (allowedSpending < amount) {
+			approved = false
+		}
 	}
 
 	function  decreaseAmount() {
-		amount--
+		if(amount >= 2) {
+			amount--
+		}
+		if (allowedSpending >= amount) {
+			approved = true
+		}
+		if (allowedSpending < amount || allowedSpending == 0) {
+			approved = false
+		}
 	}
 
 	// $: soldTickets
@@ -87,8 +105,15 @@ let usdcAddress = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
 					limit = await contract.methods.maxMintAmount().call()
 					// console.log(ticketPercentage)
 					remainingTickets = totalTickets - soldTickets
-					ticketPercentage = (totalTickets / 1000) * soldTickets 
+					ticketPercentage = (totalTickets / 100000) * soldTickets 
 
+					const contract2 = new $web3.eth.Contract(usdcABI, usdcAddress)
+					const allowance = await contract2.methods.allowance($selectedAccount, CONTRACT).call({ from: $selectedAccount })
+					allowedSpending = allowance / cost
+					// console.log(allowedSpending)
+					if (allowance >= mintPayment) {
+						approved = true
+					}
 					// console.log("cost: " + cost, "prize: " + prize)
 
 					///////////////////////////////////////////////////////////////////////////////
@@ -110,20 +135,32 @@ let usdcAddress = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
 		// console.log(allowance)
 
 		if (allowance < mintPayment) {
+			let receipt
 			const approve = await contract2.methods.approve(CONTRACT, mintPayment).send({ from: $selectedAccount, gasPrice : 35000000000, gasLimit: 200000 })
-			// altert("approval is pending, wait until the transaction goes through before buying a ticket!")
+			receipt = await $web3.eth.getTransactionReceipt(approve.transactionHash)
+			// console.log(approve.transactionHash)
+			approved = receipt.status
+			const allowance = await contract2.methods.allowance($selectedAccount, CONTRACT).call({ from: $selectedAccount })
+			allowedSpending = allowance / cost	
+			// alert("approval is pending, wait until the transaction goes through before buying a ticket!")
 		}
 		if (allowance >= mintPayment) {
 			if (amount < 5) {
 				mint = await contract.methods.mint($selectedAccount, amount).send({ from: $selectedAccount, gasPrice : 55000000000, gasLimit: 700000})
+				const allowance = await contract2.methods.allowance($selectedAccount, CONTRACT).call({ from: $selectedAccount })
+				allowedSpending = allowance / cost
 				console.log(mint)
 			}
 			if ((amount >= 5) && (amount <= 10)) {
 				mint = await contract.methods.mint($selectedAccount, amount).send({ from: $selectedAccount, gasPrice : 55000000000, gasLimit: 1500000})
+				const allowance = await contract2.methods.allowance($selectedAccount, CONTRACT).call({ from: $selectedAccount })
+				allowedSpending = allowance / cost
 				console.log(mint)
 			}
 			if ((amount > 10) && (amount <= 20)) {
 				mint = await contract.methods.mint($selectedAccount, amount).send({ from: $selectedAccount, gasPrice : 55000000000, gasLimit: 2000000})
+				const allowance = await contract2.methods.allowance($selectedAccount, CONTRACT).call({ from: $selectedAccount })
+				allowedSpending = allowance / cost
 				console.log(mint)
 			}
 		}
@@ -168,7 +205,7 @@ let usdcAddress = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
 			<!-- <div class="cover"></div> -->
 				<div>
 					<h3>Enter now for a chance to win</h3>
-					<h2>{parseInt(JSON.stringify(prize).slice(1, prize.length -5)).toLocaleString('en-IN')} $USDC</h2>
+					<h2>{parseInt(JSON.stringify(prize).slice(1, prize.length -5)).toLocaleString('en')} $USDC</h2>
 				</div>
 				<div class="img-container">
 					<img src="Tickets/Polygon/polygon1.png" alt="Ticket">
@@ -177,23 +214,23 @@ let usdcAddress = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
 					<!-- <h3>Enter now for a chance to win</h3>
 					<h2>10,000 $USDC</h2>
 					<br> -->
-					<p>This competition has a maximum of {parseInt(totalTickets).toLocaleString('en-IN')} entries.</p>
+					<p>This competition has a maximum of {parseInt(totalTickets).toLocaleString('en')} entries.</p>
 					<!-- <div class="img-container"></div> -->
 					<div class="tickets-sold">					
 						<h4>Tickets Sold</h4>
-						<p>{parseInt(soldTickets).toLocaleString('en-IN')}</p>
+						<p>{parseInt(soldTickets).toLocaleString('en')}</p>
 					</div>
 					<div class="ticket-amount">
 						<span class="left">0</span>
-						<span class="right">{parseInt(totalTickets).toLocaleString('en-IN')}</span>
+						<span class="right">{parseInt(totalTickets).toLocaleString('en')}</span>
 						<div class="progressbar">
 							<div class="bar" style="width: {ticketPercentage.toFixed(0)}%;"></div>
 						</div>
 						{#if soldTickets >= 500}
-						<p>Only {parseInt(remainingTickets).toLocaleString('en-IN')} remaining!</p>
+						<p>Only {parseInt(remainingTickets).toLocaleString('en')} remaining!</p>
 						{/if}
 						{#if soldTickets < 500}
-						<p>{parseInt(remainingTickets).toLocaleString('en-IN')} remaining!</p>
+						<p>{parseInt(remainingTickets).toLocaleString('en')} remaining!</p>
 						{/if}
 					</div>
 		
@@ -222,12 +259,17 @@ let usdcAddress = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
 		
 					{#if remainingTickets == 0}
 					<div class="buy-button-container">
-						<a href="#Test" class="button-disabled">buy Tickets</a>
+						<a href="#-" class="button-disabled">buy Tickets</a>
 					</div>
 					{/if}
-					{#if remainingTickets > 0}
+					{#if remainingTickets > 0 && approved == false}
+					<div class="approve-button-container">
+						<a href="#-" on:click={mint}>Approve USDC</a>
+					</div>
+					{/if}
+					{#if remainingTickets > 0 && approved == true}
 					<div class="buy-button-container" on:click={mint}>
-						<a href="#Test" class="buy-tickets-button">buy Tickets</a>
+						<a href="#-" class="buy-tickets-button">buy Tickets</a>
 					</div>
 					{/if}
 				</div>
@@ -248,14 +290,14 @@ let usdcAddress = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
 					<div><img src="/img/dice.png" alt="Dice"></div>
 					<div>
 						<h2>Win Probability</h2>
-						<p>1:{parseInt(totalTickets).toLocaleString('en-IN')}</p>
+						<p>1:{parseInt(totalTickets).toLocaleString('en')}</p>
 					</div>
 				</div>
 				<div class="info-box">
 					<div><img src="/img/money.png" alt="Prize Pool"></div>
 					<div>
 						<h2>Prize Pool</h2>
-						<p>${parseInt(JSON.stringify(prize).slice(1, prize.length -5)).toLocaleString('en-IN')}</p>
+						<p>${parseInt(JSON.stringify(prize).slice(1, prize.length -5)).toLocaleString('en')}</p>
 					</div>
 				</div>
 				<div class="info-box">
@@ -270,7 +312,7 @@ let usdcAddress = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
 					<div><img src="/img/self-service.png" alt="Ticket Limit"></div>
 					<div>
 						<h2>Total Tickets</h2>
-						<p>{parseInt(totalTickets).toLocaleString('en-IN')}</p>
+						<p>{parseInt(totalTickets).toLocaleString('en')}</p>
 					</div>
 				</div>
 			</div>
@@ -773,6 +815,35 @@ let usdcAddress = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
 		transition: background-size 0.3s;
 		color: #ffffff;
 	}
+
+	
+.approve-button-container {
+	display: grid;
+	justify-items: center;
+	align-items: center;
+	margin: 35px 0px 25px 0px;
+}
+
+.approve-button-container > a {
+	text-decoration: none;
+	padding: 15px 35px;
+	font-size: 18px;
+	font-weight: 600;
+	text-transform: uppercase;
+	border-radius: 999px;
+	-webkit-border-radius: 999px;
+	-moz-border-radius: 999px;
+	-ms-border-radius: 999px;
+	-o-border-radius: 999px;
+	background-image: -moz-linear-gradient(86deg, #7003ec 0%, #9703ec 44%, #ec03ec 100%);
+	background-image: -webkit-linear-gradient(86deg, #7003ec 0%, #9703ec 44%, #ec03ec 100%);
+	background-image: -ms-linear-gradient(86deg, #7003ec 0%, #9703ec 44%, #ec03ec 100%);
+	box-shadow: 0px 17px 40px 0px rgb(124 78 25 / 35%);
+	-webkit-transition: background-size 0.3s;
+	-o-transition: background-size 0.3s;
+	transition: background-size 0.3s;
+	color: #ffffff;
+}
 
 	.buy-tickets-button:hover {
 		background-image: -moz-linear-gradient(86deg, #ec038b 0%, #ec038b 44%, #ec038b 100%);

@@ -1,6 +1,7 @@
 <script>
 	import { browser } from '$app/environment';
-	// import { defaultEvmStores, web3, selectedAccount, connected, chainId, chainData } from 'svelte-web3';
+	import { defaultEvmStores, web3, selectedAccount, connected, chainId, chainData } from 'svelte-web3';
+	import { onMount } from 'svelte';
 
 	// if(browser) {
 	// 	// defaultEvmStores.setProvider();
@@ -64,6 +65,18 @@
 		}
 	}
 
+	onMount(async () => {
+		await browser
+		await $chainId
+			if ($chainId == 137) {
+				toggleNetwork(1)
+			}
+			if ($chainId == 56) {
+				toggleNetwork(2)
+			}
+				
+	});
+
 </script>
 
 <svelte:head>
@@ -73,17 +86,19 @@
 
 	<title>DeFi Lotto</title>
 	<meta name="author" content="Block Starz">
-	<meta name="keywords" content="lotto, lottery, crypto, polygon, bsc, blockchain, decentralized, 
-	game, nft, network, message, global, defi, network, defi lotto, defi lottery, finance, eth, 
-	ethereum, gambling, prize, win, winning, nft lottery, nft lotto, nfts, million, luck, DeFi, de, fi, lotto, de-fi lotto,">
+	<meta name="keywords" content="lotto, lottery, crypto, polygon, bsc, bnb, blockchain, decentralized, 
+	game, nft, nfts, network, message, global, defi, network, defi lotto, defi lottery, finance, eth, 
+	ethereum, gambling, prize, win, winning, nft lottery, nft lotto, nfts, million, luck, DeFi, de, fi,
+	lotto, de-fi lotto, defi, lotto, defilotto, win USDC, win prize, win BUSD, binance smart chain, lottery site, 
+	win crypto, win money, win jackpot, crypto lotto, crypto lottery">
 	<meta name="description" content="DeFi Lotto is a decentralized NFT based lottery platform where users can mint NFT tickets and win prizes up to 1 Million Dollars in stable coins.">
-	<meta property="og:image" content="img/logo.png">
+	<meta property="og:image" content="favicon.png">
 	<meta property="og:title" content="DeFi Lotto">
 	<meta property="og:type" content="website" />
     <meta property="og:url" content="https://defilotto.finance" />
 	<meta name="twitter:title" content="DeFi Lotto">
 	<link rel="shortcut icon" href="img/logo.png" type="image.png">
-	<link rel="icon" type="image/png" href="img/logo.png">
+	<link rel="icon" type="favicon/png" href="favicon.png">
 
 </svelte:head>
 
@@ -97,8 +112,9 @@
 				<h2 class="top-title2">Really make it</h2>
 				<p>Are you tired of getting rugged by every other project? Do you want to have a fair chance making it? With DeFi Lotto you can actually become a crypto millionaire.</p>
 				<div class="buy-button-container">
-				  <a href="/#Lotteries" class="btn1">BUY A TICKET NOW</a>
-				  <!-- <a class="video-btn" href="/" data-rel="lightcase:myCollection"><i class="fas fa-play"></i></a> -->
+					<a href="/" class="btn0"><span class="text">WEEKLY LOTTERY</span></a>
+				  <hr style="visibility:hidden;">
+				  <a href="/#Lotteries" class="btn1">OTHER LOTTERIES</a>
 				</div>
 			</div>
 	
@@ -833,8 +849,15 @@
 		font-size: 12px !important;
 	}
 
+	.btn0 {
+		margin-right: 0px !important;
+		/* padding: 15px 15px !important; */
+    	font-size: 15px !important;
+	}
+
 	.btn1 {
-		padding: 10px 15px !important;
+		margin-left: 0px !important;
+		padding: 15px 15px !important;
     	font-size: 17px !important;
 	}
 
@@ -1129,7 +1152,64 @@
 		margin-top: 30px;
 	}
 
+	.btn0 {
+		margin-right: 50px;
+		align-items: center;
+		background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+		border: 0;
+		border-radius: 999px;
+		box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+		box-sizing: border-box;
+		color: #FFFFFF;
+		display: flex;
+		font-family: Phantomsans, sans-serif;
+		font-size: 20px;
+		justify-content: center;
+		line-height: 1em;
+		max-width: 100%;
+		min-width: 140px;
+		padding: 3px;
+		text-decoration: none;
+		user-select: none;
+		-webkit-user-select: none;
+		touch-action: manipulation;
+		white-space: nowrap;
+		cursor: pointer;
+	}
+
+	.btn0:active,
+	.btn0:hover {
+		outline: 0;
+	}
+
+	.btn0 span {
+		display: grid;
+		justify-items: center;
+		background-color: rgb(15 2 51);
+		padding: 10px 0px;
+		border-radius: 6px;
+		width: 100%;
+		height: 100%;
+		transition: 300ms;
+		font-weight: 600;
+		font-size: 18px;
+		color: #ffffff;
+		border-radius: 999px;
+	}
+
+	.btn0:hover span {
+		background: none;
+	}
+
+	@media (min-width: 768px) {
+	.btn0 {
+		font-size: 24px;
+		min-width: 196px;
+	}
+	}
+
 	.btn1 {
+		margin-left: 50px;
 		padding: 15px 35px;
 		font-size: 18px;
 		font-weight: 600;
@@ -1157,7 +1237,6 @@
 	a {
 		text-decoration: none;
 		display: inline-block;
-		font-family: "Josefin Sans", sans-serif;
 		color: #ffffff;
 	}
 

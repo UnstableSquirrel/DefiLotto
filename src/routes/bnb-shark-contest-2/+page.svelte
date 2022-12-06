@@ -13,7 +13,9 @@ let busdAddress = "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56"
 	// 	connectToWeb3 = await evm.setProvider()
 	// });
 
+	let approved = false
 	let display
+	let allowedSpending = 0
 
 	const CONTRACT = "0x701F5fEE08bBfe8536cDa705E4e5207AfeB4C878"
 	///// Variables derived from chain data //////
@@ -60,11 +62,27 @@ let busdAddress = "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56"
 	}
 
 	function increaseAmount() {
-		amount++
+		if(amount <= 19) {
+			amount++
+		}
+		if (allowedSpending >= amount) {
+			approved = true
+		}
+		if (allowedSpending < amount) {
+			approved = false
+		}
 	}
 
 	function  decreaseAmount() {
-		amount--
+		if(amount >= 2) {
+			amount--
+		}
+		if (allowedSpending >= amount) {
+			approved = true
+		}
+		if (allowedSpending < amount || allowedSpending == 0) {
+			approved = false
+		}
 	}
 
 	// $: soldTickets
@@ -87,7 +105,15 @@ let busdAddress = "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56"
 					limit = await contract.methods.maxMintAmount().call()
 					// console.log(ticketPercentage)
 					remainingTickets = totalTickets - soldTickets
-					ticketPercentage = (totalTickets / 10000) * soldTickets 
+					ticketPercentage = (totalTickets / 1000000) * soldTickets 
+
+					const contract2 = new $web3.eth.Contract(busdABI, busdAddress)
+					const allowance = await contract2.methods.allowance($selectedAccount, CONTRACT).call({ from: $selectedAccount })
+					allowedSpending = allowance / cost
+					// console.log(allowedSpending)
+					if (BigInt(allowance) >= mintPayment) {
+						approved = true
+					}
 
 					// console.log("cost: " + cost, "prize: " + prize)
 
@@ -110,20 +136,39 @@ let busdAddress = "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56"
 		// console.log(allowance)
 
 		if (allowance < BigInt(mintPayment)) {
-			const approve = await contract2.methods.approve(CONTRACT, BigInt(mintPayment)).send({ from: $selectedAccount, gasPrice : 35000000000, gasLimit: 200000 })
+			let receipt
+			const approve = await contract2.methods.approve(CONTRACT, BigInt(mintPayment)).send({ from: $selectedAccount, gasPrice : 5000000000, gasLimit: 200000 })
+			receipt = await $web3.eth.getTransactionReceipt(approve.transactionHash)
+			// console.log(approve.transactionHash)
+			approved = receipt.status
+			const allowance = await contract2.methods.allowance($selectedAccount, CONTRACT).call({ from: $selectedAccount })
+			allowedSpending = allowance / cost
 			// altert("approval is pending, wait until the transaction goes through before buying a ticket!")
 		}
 		if (allowance >= BigInt(mintPayment)) {
 			if (amount < 5) {
-				mint = await contract.methods.mint($selectedAccount, amount).send({ from: $selectedAccount, gasPrice : 55000000000, gasLimit: 700000})
+				mint = await contract.methods.mint($selectedAccount, amount).send({ from: $selectedAccount, gasPrice : 5000000000, gasLimit: 700000})
+				const allowance = await contract2.methods.allowance($selectedAccount, CONTRACT).call({ from: $selectedAccount })
+				allowedSpending = allowance / cost
 				console.log(mint)
 			}
 			if ((amount >= 5) && (amount <= 10)) {
-				mint = await contract.methods.mint($selectedAccount, amount).send({ from: $selectedAccount, gasPrice : 55000000000, gasLimit: 1500000})
+				mint = await contract.methods.mint($selectedAccount, amount).send({ from: $selectedAccount, gasPrice : 5000000000, gasLimit: 1000000})
+				const allowance = await contract2.methods.allowance($selectedAccount, CONTRACT).call({ from: $selectedAccount })
+				allowedSpending = allowance / cost
 				console.log(mint)
 			}
-			if ((amount > 10) && (amount <= 20)) {
-				mint = await contract.methods.mint($selectedAccount, amount).send({ from: $selectedAccount, gasPrice : 55000000000, gasLimit: 2000000})
+			if ((amount > 10) && (amount <= 15)) {
+				mint = await contract.methods.mint($selectedAccount, amount).send({ from: $selectedAccount, gasPrice : 5000000000, gasLimit: 2000000})
+				const allowance = await contract2.methods.allowance($selectedAccount, CONTRACT).call({ from: $selectedAccount })
+				allowedSpending = allowance / cost
+				console.log(mint)
+			}
+
+			if ((amount > 15) && (amount <= 20)) {
+				mint = await contract.methods.mint($selectedAccount, amount).send({ from: $selectedAccount, gasPrice : 5000000000, gasLimit: 2500000})
+				const allowance = await contract2.methods.allowance($selectedAccount, CONTRACT).call({ from: $selectedAccount })
+				allowedSpending = allowance / cost
 				console.log(mint)
 			}
 		}
@@ -221,12 +266,17 @@ let busdAddress = "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56"
 	
 				{#if remainingTickets == 0}
 				<div class="buy-button-container">
-					<a href="#Test" class="button-disabled">buy Tickets</a>
+					<a href="#-" class="button-disabled">buy Tickets</a>
 				</div>
 				{/if}
-				{#if remainingTickets > 0}
+				{#if remainingTickets > 0 && approved == false}
+				<div class="approve-button-container">
+					<a href="#-" on:click={mint}>Approve BUSD</a>
+				</div>
+				{/if}
+				{#if remainingTickets > 0 && approved == true}
 				<div class="buy-button-container" on:click={mint}>
-					<a href="#Test" class="buy-tickets-button">buy Tickets</a>
+					<a href="#-" class="buy-tickets-button">buy Tickets</a>
 				</div>
 				{/if}
 			</div>
@@ -765,6 +815,35 @@ p, span {
 	background-image: -moz-linear-gradient(86deg, #ec038b 0%, #fb6468 44%, #fbb936 100%);
 	background-image: -webkit-linear-gradient(86deg, #ec038b 0%, #fb6468 44%, #fbb936 100%);
 	background-image: -ms-linear-gradient(86deg, #ec038b 0%, #fb6468 44%, #fbb936 100%);
+	box-shadow: 0px 17px 40px 0px rgb(124 78 25 / 35%);
+	-webkit-transition: background-size 0.3s;
+	-o-transition: background-size 0.3s;
+	transition: background-size 0.3s;
+	color: #ffffff;
+}
+
+
+.approve-button-container {
+	display: grid;
+	justify-items: center;
+	align-items: center;
+	margin: 35px 0px 25px 0px;
+}
+
+.approve-button-container > a {
+	text-decoration: none;
+	padding: 15px 35px;
+	font-size: 18px;
+	font-weight: 600;
+	text-transform: uppercase;
+	border-radius: 999px;
+	-webkit-border-radius: 999px;
+	-moz-border-radius: 999px;
+	-ms-border-radius: 999px;
+	-o-border-radius: 999px;
+	background-image: -moz-linear-gradient(86deg, #7003ec 0%, #9703ec 44%, #ec03ec 100%);
+	background-image: -webkit-linear-gradient(86deg, #7003ec 0%, #9703ec 44%, #ec03ec 100%);
+	background-image: -ms-linear-gradient(86deg, #7003ec 0%, #9703ec 44%, #ec03ec 100%);
 	box-shadow: 0px 17px 40px 0px rgb(124 78 25 / 35%);
 	-webkit-transition: background-size 0.3s;
 	-o-transition: background-size 0.3s;
