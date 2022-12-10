@@ -248,7 +248,7 @@ let usdcAddress = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
 			<!-- <div class="cover"></div> -->
 				<div>
 					<h3>Current Jackpot</h3>
-					<h2>{(parseInt(JSON.stringify(prize).slice(1, prize.length -5)).toLocaleString('en')) <= 0 ? 0 : prize} $USDC</h2>
+					<h2>{(parseInt(JSON.stringify(prize).slice(1, prize.length -5)).toLocaleString('en')) <= 0 ? 0 : parseInt(JSON.stringify(prize).slice(1, prize.length -5)).toLocaleString('en')} $USDC</h2>
 				</div>
 				<div class="img-container">
 					<img src="Tickets/polygonWeekly.png" alt="Ticket">
@@ -327,7 +327,7 @@ let usdcAddress = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
 					<div><img src="/img/money.png" alt="Prize Pool"></div>
 					<div>
 						<h2>Prize Pool</h2>
-						<p>${(parseInt(JSON.stringify(prize).slice(1, prize.length -5)).toLocaleString('en')) <= 0 ? 0 : prize}</p>
+						<p>${(parseInt(JSON.stringify(prize).slice(1, prize.length -5)).toLocaleString('en')) <= 0 ? 0 : parseInt(JSON.stringify(prize).slice(1, prize.length -5)).toLocaleString('en')}</p>
 					</div>
 				</div>
 				<div class="info-box">
