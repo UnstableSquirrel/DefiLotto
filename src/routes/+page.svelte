@@ -2,6 +2,7 @@
 	import { browser } from '$app/environment';
 	import { defaultEvmStores, web3, selectedAccount, connected, chainId, chainData } from 'svelte-web3';
 	import { onMount } from 'svelte';
+	import Tickets from '../lib/tickets.svelte'
 
 	// if(browser) {
 	// 	// defaultEvmStores.setProvider();
@@ -77,6 +78,24 @@
 				
 	});
 
+	let approved = false
+	let display
+	let allowedSpending = 0
+
+	const CONTRACT = "0xf5baB274F8465b477a4e40e9A5B617036DDB4288"
+	///// Variables derived from chain data //////
+	let totalTickets = 0
+	let cost = 0
+	let prize = 0
+	
+	let remainingTickets = 0
+	let ticketPercentage = 0
+	let soldTickets = 0
+	let limit
+	////////////////////////////////////////////
+
+	let amount = 1
+
 </script>
 
 <svelte:head>
@@ -88,9 +107,9 @@
 	<meta name="author" content="Block Starz">
 	<meta name="keywords" content="lotto, lottery, crypto, polygon, bsc, bnb, blockchain, decentralized, 
 	game, nft, nfts, network, message, global, defi, network, defi lotto, defi lottery, finance, eth, 
-	ethereum, gambling, prize, win, winning, nft lottery, nft lotto, nfts, million, luck, DeFi, de, fi,
-	lotto, de-fi lotto, defi, lotto, defilotto, win USDC, win prize, win BUSD, binance smart chain, lottery site, 
-	win crypto, win money, win jackpot, crypto lotto, crypto lottery">
+	ethereum, gambling, prize, win, winning, nft lottery, nft lotto, million, luck, DeFi, de, fi,
+	lotto, de-fi, defilottery, defi-lotto, defilotto, win USDC, win prize, win BUSD, binance smart chain, 
+	lottery site, win crypto, win money, win jackpot, crypto lotto, crypto lottery, jackpot, crypto jackpot">
 	<meta name="description" content="DeFi Lotto is a decentralized NFT based lottery platform where users can mint NFT tickets and win prizes up to 1 Million Dollars in stable coins.">
 	<meta property="og:image" content="favicon.png">
 	<meta property="og:title" content="DeFi Lotto">
@@ -112,15 +131,14 @@
 				<h2 class="top-title2">Really make it</h2>
 				<p>Are you tired of getting rugged by every other project? Do you want to have a fair chance making it? With DeFi Lotto you can actually become a crypto millionaire.</p>
 				<div class="buy-button-container">
-					<a href="/" class="btn0"><span class="text">WEEKLY LOTTERY</span></a>
+					<a href="/polygon-weekly-contest" class="btn0"><span class="text">WEEKLY LOTTERY</span></a>
 				  <hr style="visibility:hidden;">
 				  <a href="/#Lotteries" class="btn1">OTHER LOTTERIES</a>
 				</div>
 			</div>
+
+			<Tickets/>
 	
-			<!-- <div class="lp-img-container">
-				<img src="/img/ticket.png" alt="Main">
-			</div> -->
 		</div>
 	
 		<div class="bottom-banner">
@@ -1238,16 +1256,6 @@
 		text-decoration: none;
 		display: inline-block;
 		color: #ffffff;
-	}
-
-	.lp-img-container {
-		margin: 0px 0px 0px 200px;
-	}
-
-	.lp-img-container > img {
-		width: 500px;
-		height: 200px;
-		transform: rotate(-10deg);
 	}
 
 	.bottom-banner {
