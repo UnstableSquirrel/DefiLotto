@@ -12,6 +12,8 @@
 	import polyABI4 from "../contracts/POLYGON/ABI4.json"
 	import polyABI5 from "../contracts/POLYGON/ABI5.json"
 	import polyABI6 from "../contracts/POLYGON/ABI6.json"
+	import ABIWEEKLY from "../contracts/POLYGON/ABI-WEEKLY.json"
+
 
 	const polyContract1 = "0xf5baB274F8465b477a4e40e9A5B617036DDB4288"
 	const polyContract2 = "0x0AA1f9d6e818420AB69D8560937EdE8c86f16D4c"
@@ -19,6 +21,8 @@
 	const polyContract4 = "0x481A06c7E7dBd44855852Ed5E5c78D5412BAf81F"
 	const polyContract5 = "0x0CFFb9EEDE6271e829BBF005A1b8BDcDAF173033"
 	const polyContract6 = "0xeF31aFf2B9e50068Afb566B01f57078879a7C8aC"
+	const polygonWeeklyContract = "0xc17660427E1FEA7b36405B77772A0F9B3E5C15FC"
+
 
 
 
@@ -41,9 +45,11 @@
 	let line1 = "none"
 	let line2 = "underline"
 	let line3 = "none"
+	let line4 = "none"
 	let color1 = "#c4cbf9"
 	let color2 = "#ffb200"
 	let color3 = "#c4cbf9"
+	let color4 = "#c4cbf9"
 
 	let selectedRaffle = 2
 
@@ -57,6 +63,10 @@
 
 			line3 = "none"
 			color3 = "#c4cbf9"
+
+			line4 = "none"
+			color4 = "#c4cbf9"
+
 			selectedRaffle = 1
 		}
 
@@ -69,6 +79,10 @@
 
 			line3 = "none"
 			color3 = "#c4cbf9"
+
+			line4 = "none"
+			color4 = "#c4cbf9"
+
 			selectedRaffle = 2
 		}
 
@@ -81,7 +95,27 @@
 
 			line3 = "underline"
 			color3 = "#ffb200"
+
+			line4 = "none"
+			color4 = "#c4cbf9"
+
 			selectedRaffle = 3
+		}
+
+		if(i == 4) {
+			line1 = "none"
+			color1 = "#c4cbf9"
+
+			line2 = "none"
+			color2 = "#c4cbf9"
+
+			line3 = "none"
+			color3 = "#c4cbf9"
+			selectedRaffle = 3
+
+			line4 = "underline"
+			color4 = "#ffb200"
+			selectedRaffle = 4
 		}
 	}
 
@@ -91,6 +125,7 @@
 	let polygonWalletOfOwner4
 	let polygonWalletOfOwner5
 	let polygonWalletOfOwner6
+	let polygonWalletOfOwner7
 
 	let bnbWalletOfOwner1
 	let bnbWalletOfOwner2
@@ -112,6 +147,7 @@
 					const contract4 = new $web3.eth.Contract(polyABI4, polyContract4)
 					const contract5 = new $web3.eth.Contract(polyABI5, polyContract5)
 					const contract6 = new $web3.eth.Contract(polyABI6, polyContract6)
+					const contract7 = new $web3.eth.Contract(ABIWEEKLY, polygonWeeklyContract)
 
 					// polygonWalletOfOwner1 = [7, 100]
 					// polygonWalletOfOwner2 = [5, 157]
@@ -125,6 +161,7 @@
 					polygonWalletOfOwner4 = await contract4.methods.walletOfOwner($selectedAccount).call()
 					polygonWalletOfOwner5 = await contract5.methods.walletOfOwner($selectedAccount).call()
 					polygonWalletOfOwner6 = await contract6.methods.walletOfOwner($selectedAccount).call()
+					polygonWalletOfOwner7 = await contract7.methods.walletOfOwner($selectedAccount).call()
 					// walletOfOwnerAmount = walletOfOwner.length
 					// console.log(walletOfOwner.length)
 					// winningNFTId = await contract.methods.winningNFTId().call()
@@ -219,6 +256,21 @@
 
 					</span>
 				</div>
+
+				<div>
+					<p on:click={() => underline(4)} class="para" style="text-decoration: {line4}; color: {color4};">Weekly Tickets: </p>
+					<span class="para-span">
+
+						{#if $chainId == 137}
+						{polygonWalletOfOwner7.length}
+						{/if}
+
+						<!-- {#if $chainId == 56}
+						{bnbWalletOfOwner5.length + bnbWalletOfOwner6.length}
+						{/if} -->
+
+					</span>
+				</div>
 			</div>
 
 			<div class="tickets-container">
@@ -273,7 +325,18 @@
 						{#if polygonWalletOfOwner5.length + polygonWalletOfOwner6.length == 0}
 						<p style="font-size: 40px; font-weight: 700; color: #ffb200;">No Tickets yet</p>
 						{/if}
+					{:else if selectedRaffle == 4}
+						{#each polygonWalletOfOwner7 as id}
+						<div class="container">
+							<img class="ticket" src="Tickets/polygonWeekly.png" alt="Ticket">
+							<div class="centered">#{id}</div>
+						</div>
+						{/each}
+						{#if polygonWalletOfOwner7.length == 0}
+						<p style="font-size: 40px; font-weight: 700; color: #ffb200;">No Tickets yet</p>
+						{/if}
 					{/if}
+					
 				{/if}
 
 
