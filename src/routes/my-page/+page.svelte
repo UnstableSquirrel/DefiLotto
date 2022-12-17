@@ -147,7 +147,7 @@
 					const contract4 = new $web3.eth.Contract(polyABI4, polyContract4)
 					const contract5 = new $web3.eth.Contract(polyABI5, polyContract5)
 					const contract6 = new $web3.eth.Contract(polyABI6, polyContract6)
-					// const contract7 = new $web3.eth.Contract(ABIWEEKLY, polygonWeeklyContract)
+					const contract7 = new $web3.eth.Contract(ABIWEEKLY, polygonWeeklyContract)
 
 					// polygonWalletOfOwner1 = [7, 100]
 					// polygonWalletOfOwner2 = [5, 157]
@@ -155,14 +155,14 @@
 					// polygonWalletOfOwner4 = [51, 457]
 					// polygonWalletOfOwner5 = [75, 723, 520]
 					// polygonWalletOfOwner6 = [521, 657]
-					polygonWalletOfOwner7 = [521, 657, 2, 3, 4, 6, 89 , 67, 434, 346, 4576, 467, 452, 1, 24, 45, 43, 21, 12, 11, 123, 4531, 1213, 5634, 91]
+					// polygonWalletOfOwner7 = [521, 657, 2, 3, 4, 6, 89 , 67, 434, 346, 4576, 467, 452, 1, 24, 45, 43, 21, 12, 11, 123, 4531, 1213, 5634, 91]
 					polygonWalletOfOwner1 = await contract1.methods.walletOfOwner($selectedAccount).call()
 					polygonWalletOfOwner2 = await contract2.methods.walletOfOwner($selectedAccount).call()
 					polygonWalletOfOwner3 = await contract3.methods.walletOfOwner($selectedAccount).call()
 					polygonWalletOfOwner4 = await contract4.methods.walletOfOwner($selectedAccount).call()
 					polygonWalletOfOwner5 = await contract5.methods.walletOfOwner($selectedAccount).call()
 					polygonWalletOfOwner6 = await contract6.methods.walletOfOwner($selectedAccount).call()
-					// polygonWalletOfOwner7 = await contract7.methods.walletOfOwner($selectedAccount).call()
+					polygonWalletOfOwner7 = await contract7.methods.walletOfOwner($selectedAccount).call()
 					// walletOfOwnerAmount = walletOfOwner.length
 					// console.log(walletOfOwner.length)
 					// winningNFTId = await contract.methods.winningNFTId().call()
