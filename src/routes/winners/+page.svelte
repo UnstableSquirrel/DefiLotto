@@ -47,31 +47,33 @@ let txHash = "0x8354b056eca474d7a695ab976e5a44750730eb73c1ec2f8bf1f73c59f6c6f897
 		<h1>Winner List</h1>
 		<p>View the newest lucky wallet address and all previous winners from all our lottery rolls.</p>
 
+		{#each Winners.slice(0,1) as winner}
 		<div class="latest-winner-container">
 			<h1 style="font-size: 40px; font-weight: 700; color: white; margin: 10px 0px 10px 0px; text-align: center !important;">Latest Winner</h1>
 			<div>
-				<img style="margin: 0px 0px 10px 0px; width: 40px; height: 40px;" src="img/Polygon.png" alt="Polygon">
-				<p >Winning Ticket: <span style="color: #fba93f; font-size: 18px; font-weight: 700;">{winningNFTId}</span></p>
-				<p>Date: <span style="color: #fba93f; font-size: 18px; font-weight: 700;">Nov 18, 2022</span></p>
+				<img style="margin: 0px 0px 10px 0px; width: 40px; height: 40px;" src="img/{winner.Network}.png" alt="{winner.Network}">
+				<p >Winning Ticket: <span style="color: #fba93f; font-size: 18px; font-weight: 700;">{winner.NFTId}</span></p>
+				<p>Date: <span style="color: #fba93f; font-size: 18px; font-weight: 700;">{winner.Date}</span></p>
 				<div class="line"></div>
 				<h2>Winner Address</h2>
-				<a href="https://polygonscan.com/address/{winnerAddress}">
+				<a href="https://polygonscan.com/address/{winner.Wallet}">
 					<div class="latest-winner-address">
-						<h1>{winnerAddress.slice(0,12)}...{winnerAddress.slice(30,42)}</h1>
+						<h1>{winner.Wallet.slice(0,12)}...{winner.Wallet.slice(30,42)}</h1>
 						<!-- <h1>{winnerAddress}</h1> -->
 					</div>
 				</a>
 				<div style="display: grid; justify-items: center; align-items: center; grid-template-columns: auto auto;">
-					<a class="txhash-1" href="https://polygonscan.com/tx/{txHash}">
+					<a class="txhash-1" href="https://polygonscan.com/tx/{winner.Transaction}">
 						<h2>Tx Hash</h2>
 					</a>
 					<div style="display: grid; justify-items: center; align-items: center; margin: 5px 0px 5px 20px;">
 						<h2 style="font-weight: 400; margin: 5px 0px 5px 0px; text-align: center; font-size: 16px; color: white;">Prize</h2>
-						<p style="font-weight: 700; margin: 0px 0px 10px 0px; text-align: center; color: #fba93f; font-size: 18px;">$100</p>
+						<p style="font-weight: 700; margin: 0px 0px 10px 0px; text-align: center; color: #fba93f; font-size: 18px;">${winner.Prize}</p>
 					</div>
 				</div>
 			</div>
 		</div>
+		{/each}
 	</section>
 	<div class="bottom-banner">
 		<img src="/img/wave2.svg" alt="Bottom-Banner">
@@ -103,7 +105,7 @@ let txHash = "0x8354b056eca474d7a695ab976e5a44750730eb73c1ec2f8bf1f73c59f6c6f897
 							color: #c4cbf9;
 							line-height: 2;
 							margin: 0;
-							text-align: center;">Prize: $100</p>
+							text-align: center;">Prize: ${winner.Prize}</p>
                         </div>
 						<div class="right">
                             <span>Draw took place on</span>
@@ -424,6 +426,7 @@ let txHash = "0x8354b056eca474d7a695ab976e5a44750730eb73c1ec2f8bf1f73c59f6c6f897
 		margin: 15px 0px;
 		border: 5px solid #fb9f45;
 		border-radius: 5px;
+		width: 100%;
 	}
 
 	.part1 {

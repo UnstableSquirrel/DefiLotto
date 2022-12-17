@@ -159,7 +159,7 @@ let usdcAddress = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
 				console.log(mint)
 			}
 			if ((amount > 10) && (amount <= 20)) {
-				mint = await contract.methods.mint($selectedAccount, amount).send({ from: $selectedAccount, gasPrice : 55000000000, gasLimit: 2000000})
+				mint = await contract.methods.mint($selectedAccount, amount).send({ from: $selectedAccount, gasPrice : 55000000000, gasLimit: 2500000})
 				const allowance = await contract2.methods.allowance($selectedAccount, CONTRACT).call({ from: $selectedAccount })
 				allowedSpending = allowance / cost
 				console.log(mint)

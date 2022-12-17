@@ -17,6 +17,8 @@ let usdcAddress = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
 	let display
 	let allowedSpending = 0
 
+	let paused
+
 	const CONTRACT = "0xc17660427E1FEA7b36405B77772A0F9B3E5C15FC"
 	///// Variables derived from chain data //////
 	let totalTickets = 0
@@ -101,9 +103,11 @@ let usdcAddress = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
 					soldTickets = await contract.methods.supply().call()
 					cost = await contract.methods.cost().call()
 					prize = await contract.methods.checkPrizeAmount().call()
-					if(prize <= 0) {prize = 0}
+					if(prize <= 0 || prize == NaN) {prize = 0}
 					totalTickets = await contract.methods.maxSupply().call()
 					limit = await contract.methods.maxMintAmount().call()
+					// let winner1 = await contract.methods.winnerAddress().call()
+					paused = await contract.methods.paused().call()
 					// console.log(ticketPercentage)
 					remainingTickets = totalTickets - soldTickets
 					ticketPercentage = (totalTickets / 100000) * soldTickets 
@@ -160,7 +164,7 @@ let usdcAddress = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
 				console.log(mint)
 			}
 			if ((amount > 10) && (amount <= 20)) {
-				mint = await contract.methods.mint($selectedAccount, amount).send({ from: $selectedAccount, gasPrice : 55000000000, gasLimit: 2000000})
+				mint = await contract.methods.mint($selectedAccount, amount).send({ from: $selectedAccount, gasPrice : 55000000000, gasLimit: 2500000})
 				const allowance = await contract2.methods.allowance($selectedAccount, CONTRACT).call({ from: $selectedAccount })
 				allowedSpending = allowance / cost
 				console.log(mint)
@@ -233,10 +237,10 @@ let usdcAddress = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
 				</div>
 				{/if}
 
-				{#if chainId == 137}
+				{#if chainId == 137 && !paused}
 				<div class="cover" style="display: {display};">
 					<div>
-						Minted Out!
+						Draw Is Over!
 					</div>
 				</div>
 				{/if}

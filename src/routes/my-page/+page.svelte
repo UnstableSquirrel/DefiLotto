@@ -147,7 +147,7 @@
 					const contract4 = new $web3.eth.Contract(polyABI4, polyContract4)
 					const contract5 = new $web3.eth.Contract(polyABI5, polyContract5)
 					const contract6 = new $web3.eth.Contract(polyABI6, polyContract6)
-					const contract7 = new $web3.eth.Contract(ABIWEEKLY, polygonWeeklyContract)
+					// const contract7 = new $web3.eth.Contract(ABIWEEKLY, polygonWeeklyContract)
 
 					// polygonWalletOfOwner1 = [7, 100]
 					// polygonWalletOfOwner2 = [5, 157]
@@ -155,13 +155,14 @@
 					// polygonWalletOfOwner4 = [51, 457]
 					// polygonWalletOfOwner5 = [75, 723, 520]
 					// polygonWalletOfOwner6 = [521, 657]
+					polygonWalletOfOwner7 = [521, 657, 2, 3, 4, 6, 89 , 67, 434, 346, 4576, 467, 452, 1, 24, 45, 43, 21, 12, 11, 123, 4531, 1213, 5634, 91]
 					polygonWalletOfOwner1 = await contract1.methods.walletOfOwner($selectedAccount).call()
 					polygonWalletOfOwner2 = await contract2.methods.walletOfOwner($selectedAccount).call()
 					polygonWalletOfOwner3 = await contract3.methods.walletOfOwner($selectedAccount).call()
 					polygonWalletOfOwner4 = await contract4.methods.walletOfOwner($selectedAccount).call()
 					polygonWalletOfOwner5 = await contract5.methods.walletOfOwner($selectedAccount).call()
 					polygonWalletOfOwner6 = await contract6.methods.walletOfOwner($selectedAccount).call()
-					polygonWalletOfOwner7 = await contract7.methods.walletOfOwner($selectedAccount).call()
+					// polygonWalletOfOwner7 = await contract7.methods.walletOfOwner($selectedAccount).call()
 					// walletOfOwnerAmount = walletOfOwner.length
 					// console.log(walletOfOwner.length)
 					// winningNFTId = await contract.methods.winningNFTId().call()
@@ -188,6 +189,21 @@
 					alert("Please connect to the Polygon or BNB network.")
 				}
 			}
+	}
+
+	let start = 0
+	let finish = 20
+
+	function forward() {
+		start += 10
+		finish += 10
+	}
+
+	function backward() {
+		if(start != 0) {
+			start -= 10
+			finish -= 10
+		}
 	}
 
 	// console.log(Winners)
@@ -271,6 +287,21 @@
 
 					</span>
 				</div>
+				<hr style="width: 100%; grid-column: 1/3;">
+				<div style="grid-column: 1/3;">
+					{#if polygonWalletOfOwner1.length + polygonWalletOfOwner2.length > 0 && selectedRaffle == 1}
+					<p>{start} - {finish}</p>
+					{/if}
+					{#if polygonWalletOfOwner3.length + polygonWalletOfOwner4.length > 0 && selectedRaffle == 2}
+					<p>{start} - {finish}</p>
+					{/if}
+					{#if polygonWalletOfOwner5.length + polygonWalletOfOwner6.length > 0 && selectedRaffle == 3}
+					<p>{start} - {finish}</p>
+					{/if}
+					{#if polygonWalletOfOwner7.length > 0 && selectedRaffle == 4}
+					<p><span>{"< "}</span>{start} - {finish}<span>{" >"}</span></p>
+					{/if}
+				</div>
 			</div>
 
 			<div class="tickets-container">
@@ -278,65 +309,78 @@
 				{#if $chainId == 137}
 
 					{#if selectedRaffle == 1}
-						{#each polygonWalletOfOwner1 as id}
-						<div class="container">
-							<img class="ticket" src="Tickets/Polygon/polygon1.png" alt="Ticket">
-							<div class="centered">#{id}</div>
-						</div>
-						{/each}
-						{#each polygonWalletOfOwner2 as id}
-						<div class="container">
-							<img class="ticket" src="Tickets/Polygon/polygon2.png" alt="Ticket">
-							<div class="centered">#{id}</div>
-						</div>
-						{/each}
+						{#if polygonWalletOfOwner1.length > 0}
+							{#each polygonWalletOfOwner1.slice(start, finish) as id}
+							<div class="container">
+								<img class="ticket" src="Tickets/Polygon/polygon1.png" alt="Ticket">
+								<div class="centered">#{id}</div>
+							</div>
+							{/each}
+						{/if}
+						{#if polygonWalletOfOwner2.length > 0}
+							{#each polygonWalletOfOwner2.slice(start, finish) as id}
+							<div class="container">
+								<img class="ticket" src="Tickets/Polygon/polygon2.png" alt="Ticket">
+								<div class="centered">#{id}</div>
+							</div>
+							{/each}
+						{/if}
 						{#if polygonWalletOfOwner1.length + polygonWalletOfOwner2.length == 0}
 						<p style="font-size: 40px; font-weight: 700; color: #ffb200;">No Tickets yet</p>
 						{/if}
 					{:else if selectedRaffle == 2}
-						{#each polygonWalletOfOwner3 as id}
-						<div class="container">
-							<img class="ticket" src="Tickets/Polygon/polygon3.png" alt="Ticket">
-							<div class="centered">#{id}</div>
-						</div>
-						{/each}
-						{#each polygonWalletOfOwner4 as id}
-						<div class="container">
-							<img class="ticket" src="Tickets/Polygon/polygon4.png" alt="Ticket">
-							<div class="centered">#{id}</div>
-						</div>
-						{/each}
+						{#if polygonWalletOfOwner3.length > 0}
+							{#each polygonWalletOfOwner3.slice(start, finish) as id}
+							<div class="container">
+								<img class="ticket" src="Tickets/Polygon/polygon3.png" alt="Ticket">
+								<div class="centered">#{id}</div>
+							</div>
+							{/each}
+						{/if}
+						{#if polygonWalletOfOwner4.length > 0}
+							{#each polygonWalletOfOwner4.slice(start, finish) as id}
+							<div class="container">
+								<img class="ticket" src="Tickets/Polygon/polygon4.png" alt="Ticket">
+								<div class="centered">#{id}</div>
+							</div>
+							{/each}
+						{/if}
 						{#if polygonWalletOfOwner3.length + polygonWalletOfOwner4.length == 0}
 						<p style="font-size: 40px; font-weight: 700; color: #ffb200;">No Tickets yet</p>
 						{/if}
 					{:else if selectedRaffle == 3}
-						{#each polygonWalletOfOwner5 as id}
-						<div class="container">
-							<img class="ticket" src="Tickets/Polygon/polygon5.png" alt="Ticket">
-							<div class="centered">#{id}</div>
-						</div>
-						{/each}
-						{#each polygonWalletOfOwner6 as id}
-						<div class="container">
-							<img class="ticket" src="Tickets/Polygon/polygon6.png" alt="Ticket">
-							<div class="centered">#{id}</div>
-						</div>
-						{/each}
+						{#if polygonWalletOfOwner5.length > 0}
+							{#each polygonWalletOfOwner5.slice(start, finish) as id}
+							<div class="container">
+								<img class="ticket" src="Tickets/Polygon/polygon5.png" alt="Ticket">
+								<div class="centered">#{id}</div>
+							</div>
+							{/each}
+						{/if}
+						{#if polygonWalletOfOwner6.length > 0}
+							{#each polygonWalletOfOwner6.slice(start, finish) as id}
+							<div class="container">
+								<img class="ticket" src="Tickets/Polygon/polygon6.png" alt="Ticket">
+								<div class="centered">#{id}</div>
+							</div>
+							{/each}
+						{/if}
 						{#if polygonWalletOfOwner5.length + polygonWalletOfOwner6.length == 0}
 						<p style="font-size: 40px; font-weight: 700; color: #ffb200;">No Tickets yet</p>
 						{/if}
 					{:else if selectedRaffle == 4}
-						{#each polygonWalletOfOwner7 as id}
-						<div class="container">
-							<img class="ticket" src="Tickets/polygonWeekly.png" alt="Ticket">
-							<div class="centered">#{id}</div>
-						</div>
-						{/each}
+						{#if polygonWalletOfOwner7.length > 0}
+							{#each polygonWalletOfOwner7.slice(start, finish) as id}
+							<div class="container">
+								<img class="ticket" src="Tickets/polygonWeekly.png" alt="Ticket">
+								<div class="centered">#{id}</div>
+							</div>
+							{/each}
+						{/if}
 						{#if polygonWalletOfOwner7.length == 0}
 						<p style="font-size: 40px; font-weight: 700; color: #ffb200;">No Tickets yet</p>
 						{/if}
 					{/if}
-					
 				{/if}
 
 
@@ -346,13 +390,13 @@
 				{#if $chainId == 56}
 
 					{#if selectedRaffle == 1}
-						{#each bnbWalletOfOwner1 as id}
+						{#each bnbWalletOfOwner1.slice(start, finish) as id}
 						<div class="container">
 							<img class="ticket" src="Tickets/BNB/bnb1.png" alt="Ticket">
 							<div class="centered">#{id}</div>
 						</div>
 						{/each}
-						{#each bnbWalletOfOwner2 as id}
+						{#each bnbWalletOfOwner2.slice(start, finish) as id}
 						<div class="container">
 							<img class="ticket" src="Tickets/BNB/bnb2.png" alt="Ticket">
 							<div class="centered">#{id}</div>
@@ -362,13 +406,13 @@
 						<p style="font-size: 40px; font-weight: 700; color: #ffb200;">No Tickets yet</p>
 						{/if}
 					{:else if selectedRaffle == 2}
-						{#each bnbWalletOfOwner3 as id}
+						{#each bnbWalletOfOwner3.slice(start, finish) as id}
 						<div class="container">
 							<img class="ticket" src="Tickets/BNB/bnb3.png" alt="Ticket">
 							<div class="centered">#{id}</div>
 						</div>
 						{/each}
-						{#each bnbWalletOfOwner4 as id}
+						{#each bnbWalletOfOwner4.slice(start, finish) as id}
 						<div class="container">
 							<img class="ticket" src="Tickets/BNB/bnb4.png" alt="Ticket">
 							<div class="centered">#{id}</div>
@@ -378,13 +422,13 @@
 						<p style="font-size: 40px; font-weight: 700; color: #ffb200;">No Tickets yet</p>
 						{/if}
 					{:else if selectedRaffle == 3}
-						{#each bnbWalletOfOwner5 as id}
+						{#each bnbWalletOfOwner5.slice(start, finish) as id}
 						<div class="container">
 							<img class="ticket" src="Tickets/BNB/bnb5.png" alt="Ticket">
 							<div class="centered">#{id}</div>
 						</div>
 						{/each}
-						{#each bnbWalletOfOwner6 as id}
+						{#each bnbWalletOfOwner6.slice(start, finish) as id}
 						<div class="container">
 							<img class="ticket" src="Tickets/BNB/bnb6.png" alt="Ticket">
 							<div class="centered">#{id}</div>
@@ -654,7 +698,7 @@
 		display: grid;
 		justify-items: center;
 		align-items: center;
-		grid-template-columns: auto auto auto;
+		grid-template-columns: auto auto;
 		margin: 10px 0px 0px 0px;
 	}
 
