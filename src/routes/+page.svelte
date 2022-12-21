@@ -131,9 +131,9 @@
 				<h2 class="top-title2">Really make it</h2>
 				<p>Are you tired of getting rugged by every other project? Do you want to have a fair chance making it? With DeFi Lotto you can actually become a crypto millionaire.</p>
 				<div class="buy-button-container">
-					<a href="/polygon-weekly-contest" class="btn0"><span class="text">WEEKLY LOTTERY</span></a>
-				  <hr style="visibility:hidden;">
-				  <a href="/#Lotteries" class="btn1">OTHER LOTTERIES</a>
+					<!-- <a href="/polygon-weekly-contest" class="btn0"><span class="text">WEEKLY LOTTERY</span></a>
+				  <hr style="visibility:hidden;"> -->
+				  <a href="/#Lotteries" class="btn1">GO TO LOTTERIES</a>
 				</div>
 			</div>
 

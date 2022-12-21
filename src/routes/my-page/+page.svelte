@@ -273,7 +273,7 @@
 					</span>
 				</div>
 
-				<div>
+				<!-- <div>
 					<p on:click={() => underline(4)} class="para" style="text-decoration: {line4}; color: {color4};">Weekly Tickets: </p>
 					<span class="para-span">
 
@@ -281,14 +281,14 @@
 						{polygonWalletOfOwner7.length}
 						{/if}
 
-						<!-- {#if $chainId == 56}
+						{#if $chainId == 56}
 						{bnbWalletOfOwner5.length + bnbWalletOfOwner6.length}
-						{/if} -->
+						{/if} 
 
 					</span>
-				</div>
+				</div> -->
 				<hr style="width: 100%; grid-column: 1/3;">
-				<div style="grid-column: 1/3;">
+				<!-- <div style="grid-column: 1/3;">
 					{#if polygonWalletOfOwner1.length + polygonWalletOfOwner2.length > 0 && selectedRaffle == 1}
 					<p>{start} - {finish}</p>
 					{/if}
@@ -301,7 +301,7 @@
 					{#if polygonWalletOfOwner7.length > 0 && selectedRaffle == 4}
 					<p><span>{"< "}</span>{start} - {finish}<span>{" >"}</span></p>
 					{/if}
-				</div>
+				</div> -->
 			</div>
 
 			<div class="tickets-container">
