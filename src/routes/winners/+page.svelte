@@ -95,7 +95,7 @@ let txHash = "0x8354b056eca474d7a695ab976e5a44750730eb73c1ec2f8bf1f73c59f6c6f897
 
 				<div class="winner-img-container">
 					<img src="{winner.Src}" alt="Winning Lottery Ticket">
-					<div class="centered">#{winner.NFTId}</div>
+					<div class="winner-id">#{winner.NFTId}</div>
 				</div>
 
 				<div class="description-container">
@@ -174,6 +174,11 @@ let txHash = "0x8354b056eca474d7a695ab976e5a44750730eb73c1ec2f8bf1f73c59f6c6f897
 		.winner-img-container > img {
 			margin: 0px !important;
 		}
+
+		.winner-id {
+			top: 70% !important;
+			left: 38% !important;
+		}
 }
 
 @media (min-width: 431px) and (max-width: 530px) {
@@ -200,6 +205,11 @@ let txHash = "0x8354b056eca474d7a695ab976e5a44750730eb73c1ec2f8bf1f73c59f6c6f897
 
 		.winner-img-container > img {
 			margin: 0px !important;
+		}
+
+		.winner-id {
+			top: 70% !important;
+			left: 38% !important;
 		}
 
 		.winner-addr > a > p {
@@ -253,6 +263,11 @@ let txHash = "0x8354b056eca474d7a695ab976e5a44750730eb73c1ec2f8bf1f73c59f6c6f897
 
 		.winner-img-container > img {
 			margin: 0px !important;
+		}
+
+		.winner-id {
+			top: 70% !important;
+			left: 38% !important;
 		}
 
 		.winner-addr > a > p {
@@ -439,6 +454,7 @@ let txHash = "0x8354b056eca474d7a695ab976e5a44750730eb73c1ec2f8bf1f73c59f6c6f897
 	}
 
 	.winner-img-container {
+		position: relative;
 		margin: 0px 25px 0px 0px;
 	}
 
@@ -448,6 +464,19 @@ let txHash = "0x8354b056eca474d7a695ab976e5a44750730eb73c1ec2f8bf1f73c59f6c6f897
 		max-width: 250px;
 		/* transform: rotate(90deg); */
 		margin: 0px 25px 0px 0px;
+	}
+
+	.winner-id {
+		font-size: 35px;
+		color: white;
+		font-weight: 600;
+		top: 70%;
+		left: 35%;
+		position: absolute;
+	}
+
+	.winner:last-of-type > .winner-img-container > .winner-id {
+		opacity: 0;
 	}
 
 	.left {
