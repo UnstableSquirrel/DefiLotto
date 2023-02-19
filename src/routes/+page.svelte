@@ -1227,7 +1227,7 @@
 	}
 
 	.btn1 {
-		margin-left: 50px;
+		/* margin-left: 50px; */
 		padding: 15px 35px;
 		font-size: 18px;
 		font-weight: 600;

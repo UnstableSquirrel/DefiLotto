@@ -283,6 +283,13 @@ let usdcAddress = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
 
 <section class="section3">
 
+	<div class="contract-address">
+		<span >Contract Address:</span>
+		<a href="https://polygonscan.com/address/{CONTRACT}">
+			{CONTRACT}
+		</a>
+	</div>
+
 	<div class="info1">
 		<h2>Summary</h2>
 
@@ -516,6 +523,9 @@ z-index: -1;
 	/* height: 80px !important; */
 	/* transform: rotate(-20deg) !important; */
 }
+.contract-address {
+		font-size: 11px;
+	}
 }
 
 .section1 {
@@ -935,5 +945,21 @@ p, span {
 	font-weight: 600;
 	margin: 25px 0px;
 }
+
+.contract-address {
+		display: grid; 
+		justify-items: center; 
+		margin: 0px 0px 100px 0px;
+	}
+
+	.contract-address > a {
+		text-decoration: none; 
+		color: #ffc000;
+		transition: all 0.2s linear;
+	}
+
+	.contract-address > a:hover {
+		color: #b58800;
+	}
 	
 </style>
