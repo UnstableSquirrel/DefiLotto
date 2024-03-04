@@ -9,12 +9,11 @@
 	"devDependencies": {
 		"@fontsource/fira-mono": "^4.5.10",
 		"@neoconfetti/svelte": "^1.0.0",
-		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/adapter-static": "^3.0.1",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
 		"svelte": "^4.0.5",
-		"vite": "^4.4.2",
+		"vite": "^5.0.3",
 		"vite-plugin-node-polyfills": "^0.21.0"
 	},
 	"type": "module",
