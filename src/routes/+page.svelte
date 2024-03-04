@@ -1,7 +1,6 @@
 <script>
-	import { browser } from '$app/environment';
-	import { defaultEvmStores, web3, selectedAccount, connected, chainId, chainData } from 'svelte-web3';
-	import { onMount } from 'svelte';
+	// import { browser } from '$app/environment';
+	// import { onMount } from 'svelte';
 	import Tickets from '../lib/tickets.svelte'
 
 	// if(browser) {
@@ -66,17 +65,17 @@
 		}
 	}
 
-	onMount(async () => {
-		await browser
-		await $chainId
-			if ($chainId == 137) {
-				toggleNetwork(1)
-			}
-			if ($chainId == 56) {
-				toggleNetwork(2)
-			}
+	// onMount(async () => {
+	// 	await browser
+	// 	await $chainId
+	// 		if ($chainId == 137) {
+	// 			toggleNetwork(1)
+	// 		}
+	// 		if ($chainId == 56) {
+	// 			toggleNetwork(2)
+	// 		}
 				
-	});
+	// });
 
 	let approved = false
 	let display
@@ -254,10 +253,14 @@
 		</div>
 
 		<div class="select-chain-lotteries">
+			<!-- svelte-ignore a11y-no-static-element-interactions -->
+			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<div on:click="{() => toggleNetwork(1)}" style="background-color:{background1};">
 				<img style="border:{border1};" src="img/Polygon.png" alt="Polygon">
 					<p style="font-weight: {fontWeight1}; color: {color1};">Polygon Network</p>
 			</div>
+			<!-- svelte-ignore a11y-click-events-have-key-events -->
+			<!-- svelte-ignore a11y-no-static-element-interactions -->
 			<div on:click="{() => toggleNetwork(2)}" style="background-color:{background2};">
 				<img style="border:{border2};" src="img/BSC.png" alt="Binance Smart Chain">
 				<p style="font-weight: {fontWeight2}; color: {color2};">Binance Smart Chain</p>
@@ -286,7 +289,7 @@
 						<p>Ticket Prize: <span>$1.50</span></p>
 						<p>Total Tickets: <span>1,000</span></p>
 						<p>Winning Probability: <span>1:1,000</span></p>
-						<a href="/polygon-dolphin-contest-1"><button>Get Tickets</button></a>
+						<a href="/contests/0"><button>Get Tickets</button></a>
 					</div>
 				</div>
 
@@ -300,7 +303,7 @@
 						<p>Ticket Prize: <span>$1.50</span></p>
 						<p>Total Tickets: <span>10,000</span></p>
 						<p>Winning Probability: <span>1:10,000</span></p>
-						<a href="/polygon-dolphin-contest-2"><button>Get Tickets</button></a>
+						<a href="/contests/1"><button>Get Tickets</button></a>
 					</div>
 				</div>
 
@@ -326,7 +329,7 @@
 						<p>Ticket Prize: <span>$5</span></p>
 						<p>Total Tickets: <span>1,000</span></p>
 						<p>Winning Probability: <span>1:1,000</span></p>
-						<a href="/polygon-shark-contest-1"><button>Get Tickets</button></a>
+						<a href="/contests/2"><button>Get Tickets</button></a>
 					</div>
 				</div>
 
@@ -340,7 +343,7 @@
 						<p>Ticket Prize: <span>$5</span></p>
 						<p>Total Tickets: <span>25,000</span></p>
 						<p>Winning Probability: <span>1:10,000</span></p>	
-						<a href="/polygon-shark-contest-2"><button>Get Tickets</button></a>
+						<a href="/contests/3"><button>Get Tickets</button></a>
 					</div>
 				</div>
 
@@ -367,7 +370,7 @@
 						<p>Ticket Prize: <span>$15</span></p>
 						<p>Total Tickets: <span>1,000</span></p>
 						<p>Winning Probability: <span>1:1,000</span></p>
-						<a href="/polygon-whale-contest-1"><button>Get Tickets</button></a>
+						<a href="/contests/4"><button>Get Tickets</button></a>
 					</div>
 				</div>
 
@@ -381,7 +384,7 @@
 						<p>Ticket Prize: <span>$15</span></p>
 						<p>Total Tickets: <span>10,000</span></p>
 						<p>Winning Probability: <span>1:10,000</span></p>
-						<a href="/polygon-whale-contest-2"><button>Get Tickets</button></a>
+						<a href="/contests/5"><button>Get Tickets</button></a>
 					</div>
 				</div>
 				
@@ -420,7 +423,7 @@
 						<p>Ticket Prize: <span>$1.50</span></p>
 						<p>Total Tickets: <span>1,000</span></p>
 						<p>Winning Probability: <span>1:1,000</span></p>
-						<a href="/bnb-dolphin-contest-1"><button>Get Tickets</button></a>
+						<a href="/contests/6"><button>Get Tickets</button></a>
 					</div>
 				</div>
 
@@ -434,7 +437,7 @@
 						<p>Ticket Prize: <span>$1.50</span></p>
 						<p>Total Tickets: <span>10,000</span></p>
 						<p>Winning Probability: <span>1:10,000</span></p>
-						<a href="/bnb-dolphin-contest-2"><button>Get Tickets</button></a>
+						<a href="/contests/7"><button>Get Tickets</button></a>
 					</div>
 				</div>
 
@@ -461,7 +464,7 @@
 						<p>Ticket Prize: <span>$5</span></p>
 						<p>Total Tickets: <span>1,000</span></p>
 						<p>Winning Probability: <span>1:1,000</span></p>
-						<a href="/bnb-shark-contest-1"><button>Get Tickets</button></a>
+						<a href="/contests/8"><button>Get Tickets</button></a>
 					</div>
 				</div>
 
@@ -475,7 +478,7 @@
 						<p>Ticket Prize: <span>$5</span></p>
 						<p>Total Tickets: <span>25,000</span></p>
 						<p>Winning Probability: <span>1:10,000</span></p>	
-						<a href="/bnb-shark-contest-2"><button>Get Tickets</button></a>
+						<a href="/contests/9"><button>Get Tickets</button></a>
 					</div>
 				</div>
 
@@ -502,7 +505,7 @@
 						<p>Ticket Prize: <span>$15</span></p>
 						<p>Total Tickets: <span>1,000</span></p>
 						<p>Winning Probability: <span>1:1,000</span></p>
-						<a href="/bnb-whale-contest-1"><button>Get Tickets</button></a>
+						<a href="/contests/10"><button>Get Tickets</button></a>
 					</div>
 				</div>
 
@@ -516,7 +519,7 @@
 						<p>Ticket Prize: <span>$15</span></p>
 						<p>Total Tickets: <span>10,000</span></p>
 						<p>Winning Probability: <span>1:10,000</span></p>
-						<a href="/bnb-whale-contest-2"><button>Get Tickets</button></a>
+						<a href="/contests/11"><button>Get Tickets</button></a>
 					</div>
 				</div>
 				

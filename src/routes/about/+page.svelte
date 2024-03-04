@@ -4,21 +4,25 @@
 	let deg1 = 270
 	let height1 = 0
 	let font1 = 0
+	let pad1 = 0;
 	let open1 = false
 
 	let deg2 = 270
 	let height2 = 0
 	let font2 = 0
+	let pad2 = 0;
 	let open2 = false
 
 	let deg3 = 270
 	let height3 = 0
 	let font3 = 0
+	let pad3 = 0;
 	let open3 = false
 
 	let deg4 = 270
 	let height4 = 0
 	let font4 = 0
+	let pad4 = 0;
 	let open4 = false
 
 	function toggle1() {
@@ -26,6 +30,7 @@
 			deg1 = 90
 			height1 = 100
 			font1 = 16
+			pad1 = 20;
 			open1 = true
 			return
 		}
@@ -33,6 +38,7 @@
 			deg1 = 270
 			height1 = 0
 			font1 = 0
+			pad1 = 0;
 			open1 = false
 			return
 		}
@@ -43,6 +49,7 @@
 			deg2 = 90
 			height2 = 100
 			font2 = 16
+			pad2 = 20;
 			open2 = true
 			return
 		}
@@ -50,6 +57,7 @@
 			deg2 = 270
 			height2 = 0
 			font2 = 0
+			pad2 = 0;
 			open2 = false
 			return
 		}
@@ -60,6 +68,7 @@
 			deg3 = 90
 			height3 = 100
 			font3 = 16
+			pad3 = 20;
 			open3 = true
 			return
 		}
@@ -67,6 +76,7 @@
 			deg3 = 270
 			height3 = 0
 			font3 = 0
+			pad3 = 0;
 			open3 = false
 			return
 		}
@@ -77,6 +87,7 @@
 			deg4 = 90
 			height4 = 100
 			font4 = 16
+			pad4 = 20;
 			open4 = true
 			return
 		}
@@ -84,6 +95,7 @@
 			deg4 = 270
 			height4 = 0
 			font4 = 0
+			pad4 = 0;
 			open4 = false
 			return
 		}
@@ -146,11 +158,13 @@
 		<div class="faq-main-container">
 
 			<div class="faq-container">
-				<div class="faq-header" on:click="{() => toggle1()}">
+				<!-- svelte-ignore a11y-no-static-element-interactions -->
+				<!-- svelte-ignore a11y-click-events-have-key-events -->
+				<div class="faq-header" on:click="{toggle1}">
 					<h2>What do I need to participate in a lottery raffle?</h2>
 					<p style="transform: rotate({deg1}deg);">❯</p>
 				</div>
-				<div class="col-text" style="height: {height1}%">
+				<div class="col-text" style="height: {height1}%; padding: {pad1}px 0px;">
 					<p style="height: {height1}%; font-size: {font1}px">
 						You'll need enough of the chain's gas token to pay for the transaction and enough of the stablecoin required for the ticket.
 					</p>
@@ -158,11 +172,13 @@
 			</div>
 
 			<div class="faq-container">
-				<div class="faq-header" on:click="{() => toggle2()}">
+				<!-- svelte-ignore a11y-click-events-have-key-events -->
+				<!-- svelte-ignore a11y-no-static-element-interactions -->
+				<div class="faq-header" on:click="{toggle2}">
 					<h2>How does the prize get distributed? When can I claim my prize?</h2>
 					<p style="transform: rotate({deg2}deg);">❯</p>
 				</div>
-				<div class="col-text" style="height: {height2}%">
+				<div class="col-text" style="height: {height2}%; padding: {pad2}px 0px;">
 					<p style="height: {height2}%; font-size: {font2}px">
 						Each raffle prize is automatically send to the wallet holding the winning NFT, as determined by Chainlink's Verifiable Random Function.
 					</p>
@@ -170,11 +186,13 @@
 			</div>
 
 			<div class="faq-container">
-				<div class="faq-header" on:click="{() => toggle3()}">
+				<!-- svelte-ignore a11y-click-events-have-key-events -->
+				<!-- svelte-ignore a11y-no-static-element-interactions -->
+				<div class="faq-header" on:click="{toggle3}">
 					<h2>How high are my chances in winning a NFT lottery?</h2>
 					<p style="transform: rotate({deg3}deg);">❯</p>
 				</div>
-				<div class="col-text" style="height: {height3}%">
+				<div class="col-text" style="height: {height3}%; padding: {pad3}px 0px;">
 					<p style="height: {height3}%; font-size: {font3}px">
 						Mainstream lotteries can have chances of around 1:300,000,000. With DeFi Lotto your chances of winning a raffle can range 
 						from 1:1,000 to 1:10,000, depending on the lottery you choose. 
@@ -183,11 +201,13 @@
 			</div>
 
 			<div class="faq-container">
-				<div class="faq-header" on:click="{() => toggle4()}">
+				<!-- svelte-ignore a11y-click-events-have-key-events -->
+				<!-- svelte-ignore a11y-no-static-element-interactions -->
+				<div class="faq-header" on:click="{toggle4}">
 					<h2>How does the whole NFT lottery process work?</h2>
 					<p style="transform: rotate({deg4}deg);">❯</p>
 				</div>
-				<div class="col-text" style="height: {height4}%">
+				<div class="col-text" style="height: {height4}%; padding: {pad4}px 0px;">
 					<p style="height: {height4}%; font-size: {font4}px">
 						First users mint NFT lottery tickets from a certain competition until the max amount that can be minted is reached. 
 						A function is then called which sends a request to Chainlink VRF in order to receive a random number in the range 
@@ -475,7 +495,7 @@
 		-moz-border-radius: 20px !important;
 		-ms-border-radius: 20px !important;
 		-o-border-radius: 20px !important;
-		padding: 10px 20px;
+		padding: 0px 20px;
 		transition: all 0.4s linear;
 		word-wrap: break-word;
 		background-clip: border-box;
@@ -501,7 +521,6 @@
 		padding: 0px 20px 20px 20px;
 		margin-bottom: 0 !important;
 		transition: all 1s linear;
-		font-size: 20px;
 		color: #ffffff;
 		font-weight: 600;
 		line-height: 1.3;
@@ -521,7 +540,6 @@
 		justify-content: center;
 		align-items: center;
 		transition: all 0.1s linear;
-		padding: 20px 0px 10px 0px;
 	}
 
 	.col-text > p {

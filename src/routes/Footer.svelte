@@ -1,5 +1,5 @@
 <script>
-
+	const currentYear = new Date().getFullYear();
 </script>
 
 <footer>
@@ -39,7 +39,7 @@
 		<a href="/about/#Contact">Contact</a>
 	</div>
 	<hr>
-	<p class="copyright">Copyright © 2022 - DeFi Lotto</p>
+	<p class="copyright">Copyright © {currentYear} - DeFi Lotto</p>
 
 </footer>
 

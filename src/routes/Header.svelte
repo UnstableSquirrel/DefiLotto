@@ -1,77 +1,50 @@
 <script>
-	
-	import { page } from '$app/stores';
-	import './styles.css';
-	import { browser } from '$app/environment';
-	import { onMount } from 'svelte';
-	import { defaultEvmStores as evm, web3, selectedAccount, connected, chainId, chainData, contracts } from 'svelte-web3';
-	// import usdcABI from "./contracts/USDC_ABI.json"
-	// let usdcAddress = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
+	import "./styles.css";
+	import { browser } from "$app/environment";
+	import { onMount } from "svelte";
+	import { web3, selectedAccount, connected, chainId } from "../lib/scripts/stores";
+	import { login, logout, switchNetworkToPolygon }  from "../lib/scripts/web3-functions";
+	// import Web3 from "web3";
+	// import usdcABI from "./contracts/USDC_ABI.json";
+	// let usdcAddress = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174";
 
-	let y = 0
-	let display = "flex"
+	let y = 0;
+	let display = "flex";
 
 	const stickToTop = () => {
 		if (y > 50) {
-			display = "none"
+			display = "none";
 		}
 		else {
-			display = "flex"
+			display = "flex";
 		}
 	}
 
-	let menuBar = "menu-btn"
-	let menuDiv = "menu-section"
-	let col = "col-list-hidden"
-	let height1 = 0
-	let height2 = 0
-	let disp1 = "none"
+	let menuBar = "menu-btn";
+	let menuDiv = "menu-section";
+	let col = "col-list-hidden";
+	let height1 = 0;
+	let height2 = 0;
+	let disp1 = "none";
 
 	const toggleMenu = () => {
 		if (menuBar === "menu-btn") {
-			menuBar = "menu-btn open"
-			menuDiv = "" + "ms-open"
-			col = "col-list"
-			height1 = 200
-			height2 = 18
-			disp1 = "block"
+			menuBar = "menu-btn open";
+			menuDiv = "" + "ms-open";
+			col = "col-list";
+			height1 = 200;
+			height2 = 18;
+			disp1 = "block";
 		}
 		else {
-			menuBar = "menu-btn"
-			menuDiv = "" + "menu-section"
-			col = "col-list-hidden"
-			height1 = 0
-			height2 = 0
-			disp1 = "none"
+			menuBar = "menu-btn";
+			menuDiv = "" + "menu-section";
+			col = "col-list-hidden";
+			height1 = 0;
+			height2 = 0;
+			disp1 = "none";
 		}
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//   // @ts-ignore
-//   window.userAddress = null
-//   let wallet
-//   // @ts-ignore
-//   $: if (wallet != window.userAddress) {
-// 		// @ts-ignore
-// 		wallet = window.userAddress
-//   }
-
-//   $: wallet
-
-
-
 
 //   let gas
 //   // $: gas
@@ -93,105 +66,41 @@
 //   let gasModal = "close"
 
 
-
-
-//   onMount(async () => {
-// 	// window.onload = async () => {
-// 		// @ts-ignore
-// 		if (window.ethereum) {
-// 		// @ts-ignore
-// 		window.web3 = new Web3(window.ethereum)
-// 		} else {
-// 		alert("No ETH brower extension detected.")
-// 		}
-// 		// @ts-ignore
-// 		window.userAddress = window.localStorage.getItem("userAddress")
-// 		// @ts-ignore
-// 		wallet = window.userAddress
-// 	// }
-//   })
-
-//   function truncateAddress(address) {
-//     if (!address) {
-//       return ""
-//     }
-//     return `${address.substr(0, 5)}...${address.substr(
-//       address.length - 5,
-//       address.length
-//     )}`
-//   }
-
-//   function logout() {
-//     // @ts-ignore
-//     window.userAddress = null
-//     // @ts-ignore
-//     wallet = window.userAddress
-//     window.localStorage.removeItem("userAddress")
-//   }
-
-//   async function loginWithEth() {
-//     // @ts-ignore
-//     if (window.web3) {
-//         try {
-//           // @ts-ignore
-//           const selectedAccount = await window.ethereum
-//             .request({
-//               method: "eth_requestAccounts",
-//             })
-//             .then((accounts) => accounts[0])
-//             .catch(() => {
-//               throw Error("No account selected!")
-//             })
-//           // @ts-ignore
-//           window.userAddress = selectedAccount
-//           // @ts-ignore
-//           wallet = window.userAddress
-//           window.localStorage.setItem("userAddress", selectedAccount)
-//         } catch (error) {
-//           console.error(error)
-//         }
-//       } else {
-//         alert("No ETH brower extension detected.")
-//       }
-//   }
-
-  function logout() {
-	evm.disconnect()
-  }
-
-  export async function loginWithEth() {
-	if(browser) {
-		// defaultEvmStores.setProvider();
-
-		// Ethereum Web3 provider
-		// defaultEvmStores.setProvider('https://eth-mainnet.nodereal.io/v1/1659dfb40aa24bbb8153a677b98064d7')
-
-		// Polygon Web3 provider
-		// evm.setProvider('https://rpc-mainnet.maticvigil.com')
-		// evm.setProvider('https://polygon-rpc.com')
-		await evm.setProvider()
-		// if ($chainId != 137) {
-		// 	alert("Please connect to the Polygon network.")
-		// }
-		// console.log(selectedAccount)
-
-		// evm.setProvider()
+$: (async function () {
+	if (browser && window.ethereum) {
+		window.ethereum.on("accountsChanged", walletUpdate);
 	}
-  }
+})();
 
-//   evm.attachContract('DFL', CONTRACT, ABI, { from: "0x18F6b05512BD9ec4E1B2bBbecca45459e6FEA775" })
-//   let USDC = evm.attachContract('USDC', usdcAddress, usdcABI, { from: "0x18F6b05512BD9ec4E1B2bBbecca45459e6FEA775" })
+export async function walletUpdate() {
+    let walletsHolder = await window.ethereum.request({ method: "eth_requestAccounts" });
+	let connectedHolder = false;
+	if (walletsHolder.length > 0) {
+		connectedHolder = true;
+	} else {
+		connectedHolder = false;
+	}
+    connected.set(connectedHolder);
+    selectedAccount.set(walletsHolder[0]);
+	console.log($web3, $connected, $selectedAccount);
+}
 
-//   async function testFunction() {
-// 	const contract = new $web3.eth.Contract(usdcABI, usdcAddress)
-//     // const web3 = new Web3(window.ethereum)
-//     // const contract = new web3.eth.Contract(usdcABI, usdcAddress)
-//     // const info = await contract.methods.balanceOf("0x7141129679319e1bbb5dcfc63b845a94d0e816b6").call({ from: wallet })
-// 	// const info = await contract.methods.approve("0x7141129679319e1bbb5dcfc63b845a94d0e816b6", 15000000).send({ from: wallet })
-// 	// const info = await contract.methods.allowance("0x18F6b05512BD9ec4E1B2bBbecca45459e6FEA775", usdcAddress).call({ from: "0x18F6b05512BD9ec4E1B2bBbecca45459e6FEA775" })
-// 	const info = await contract.methods.allowance("0x18F6b05512BD9ec4E1B2bBbecca45459e6FEA775", usdcAddress).call()
-//     console.log(info)
-//   }
+onMount(async () => {
+	if (browser) {
+		await window.ethereum;
+		if (window.ethereum) {
+			try {
+				login(browser, window.ethereum);
+				// if($chainId !== 56 || $chainId !== 137) {
+				// 	await switchNetworkToPolygon();
+				// }
+				console.log("Chain ID: ", $chainId);	
+			} catch (error) {
+				console.log(error);
+			}
+		}
+	}
+});
 
 </script>
 
@@ -225,11 +134,15 @@
 			
 				<!-- {#if wallet != null || wallet != undefined} -->
 				{#if $selectedAccount}
-				<div class="login" on:click={logout}>
-					<button>{evm.$selectedAccount.slice(0, 5)}...{evm.$selectedAccount.slice(38, 42)}</button>
+				<!-- svelte-ignore a11y-click-events-have-key-events -->
+				<!-- svelte-ignore a11y-no-static-element-interactions -->
+				<div class="login" on:click={() => logout()}>
+					<button>{$selectedAccount.slice(0, 5)}...{$selectedAccount.slice(38, 42)}</button>
 				</div>
 				{:else}
-				<div class="login" on:click={loginWithEth}>
+				<!-- svelte-ignore a11y-click-events-have-key-events -->
+				<!-- svelte-ignore a11y-no-static-element-interactions -->
+				<div class="login" on:click={() => login(browser, window.ethereum)}>
 					<button>Connect Wallet</button>
 				</div>
 				{/if}
@@ -268,6 +181,8 @@
 			</div>
 
 			<div class="menu2-container">
+				<!-- svelte-ignore a11y-click-events-have-key-events -->
+				<!-- svelte-ignore a11y-no-static-element-interactions -->
 				<div on:click={toggleMenu} class={menuBar}>
 					<div class="menu-btn__burger"></div>
 				</div>
@@ -449,7 +364,7 @@
 	}
 	.menu-btn__burger::before,
 	.menu-btn__burger::after {
-		content: '';
+		content: "";
 		position: absolute;
 		width: 50px;
 		height: 6px;
