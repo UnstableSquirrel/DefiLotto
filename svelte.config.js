@@ -25,7 +25,27 @@ export default {
 			assets: 'build',
 			fallback: undefined,
 			precompress: false,
-			strict: true
-		})
+			strict: true,
+		}),
+		prerender: {
+			entries: [
+				'/',
+				"/about",
+				"/my-page",
+				"/winners",
+				'/contests/0', 
+				'/contests/1', 
+				'/contests/2', 
+				'/contests/3', 
+				'/contests/4',
+				'/contests/5',
+				'/contests/6',
+				'/contests/7',
+				'/contests/8',
+				'/contests/9',
+				'/contests/10',
+				'/contests/11'
+			]
+		}
 	}
 };
